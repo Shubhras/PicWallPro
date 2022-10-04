@@ -1,0 +1,66 @@
+<div id="company-performances" class="page-layout blank" style="position: relative">
+    <!-- HEADER -->
+    <div class="header header-content-dashboard" fxLayout="row" fxLayout.gt-xs="row">
+        <!-- APP TITLE -->
+        <div fxFlex="15" fxFlex.gt-xs="10" fxFlex.gt-md="10" fxLayoutAlign="start center">
+            <!-- <button class="mat-icon-button mat-icon-button-aroow" [routerLink]="['/apps/prima-welcome/prima-welcome']">
+                <span class="mat-button-wrapper">
+                    <mat-icon matTooltip="view Your Dashboard">developer_board</mat-icon>
+                     <img class="back-arrow-icon" src="assets/icons/back-arrow-icon.png"> 
+                </span>
+            </button> -->
+
+        </div>
+        <div fxFlex="90" fxFlex.gt-xs="90" fxFlex.gt-md="90" fxLayoutAlign="center center">
+            <div fxLayout="row">
+                <div class="logo" fxLayout="row">
+                    <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        PICWALL PHOTO
+            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- user profile -->
+    <!-- <div fxFlex="100" fxLayoutAlign="start center">
+        <select class="form-control-small">
+        <option value="0">Text</option>
+        <option value="2" >Markdown</option>
+        <option value="1">Binary</option>
+    </select>
+    </div> -->
+    <!-- <div fxFlex="100" fxLayoutAlign="start left">
+        <div *ngFor="let image of images" fxFlex="13">
+            <img [src]="image.avatar" style="border-radius: 36px;
+        padding: 20px; margin-left: 5px;">
+            <p style="margin-left: 44px;
+        margin-top: -12px;">{{image.name}}</p>
+        </div>
+    </div> -->
+    <div class="content" fxLayout="row wrap" class="filterrow" fxLayoutAlign="center right">
+        <div class="form-group" fxLayoutAlign="center center">
+            <!-- <label for="power">Hero Power</label> -->
+            <select class="form-control" id="power1" name="power1">
+                <option *ngFor="let classes of class" [value]="pow">{{classes}}</option>
+            </select>
+        </div>
+        <div class="form-group" fxLayoutAlign="center center">
+            <!-- <label for="power">Hero Power</label> -->
+            <select class="form-control" id="power1" name="power1">
+                <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+            </select>
+        </div>
+        &nbsp; &nbsp;
+        <div class="form-group" fxLayoutAlign="center center">
+            <button mat-stroked-button class="form-control upload-button">
+                <input type="file"  >
+                 </button>
+        </div>
+
+    </div>
+    <div class="content" fxLayout="row wrap">
+        <div class="friend" fxFlex="15" fxFlex.gt-md="10" *ngFor="let image of images">
+            <img [src]="image.avatar" class="userimg">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div id="unit-change" class="page-layout blank">
+    <!-- HEADER -->
+    <div class="header header-content-dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row">
+        <!-- APP TITLE -->
+        <div fxLayout="row">
+            <div class="logo" fxLayout="row">
+                <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    BRANDING
+        </span>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+    <div class="content all-pages-content">
+        <div class="left">
+            <div class="main-widget main-widget-filter">
+                <div class="widget-group p-0" fxLayout="row" [@animateStagger]="{value:'50'}">
+                    <fuse-widget class="widget p-0" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="50" style="margin-left: 29pc;
+                ">
+
+                        <div class="content" fxLayout="row wrap">
+                            <div class="friend" fxFlex="50">
+                                <img class="upload_branding_img" src="assets/images/avatars/image-icon.png">
+                                <br>
+                                <button mat-stroked-button class="form-control upload-button">
+                                    <input type="file"  >
+                                     </button>
+                                <h3 class="mt-24 mb-8">Background color:</h3>
+                                <!-- <fuse-material-color-picker class="mb-16">
+                                </fuse-material-color-picker> -->
+                                <div ng-app class="color-picker">
+                                    <input type="color" ng-model="test" class="color-input" name="hi" id="" />
+                                    <div class="hi" style="background-color:'{{test}}'">{{test}}</div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </fuse-widget>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

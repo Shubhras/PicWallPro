@@ -1,0 +1,80 @@
+<div id="unit-change" class="page-layout blank">
+    <!-- HEADER -->
+    <div class="header header-content-dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row">
+        <!-- APP TITLE -->
+        <div fxLayout="row">
+            <div class="logo" fxLayout="row">
+                <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    ACCOUNT SETTING
+        </span>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+    <div class="content all-pages-content">
+        <div class="left">
+            <div class="main-widget main-widget-filter">
+                <div class="widget-group p-0" fxLayout="row" [@animateStagger]="{value:'50'}">
+                    <fuse-widget class="widget p-0" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="50" style="margin-left: 23pc;
+                ">
+                        <div fxLayout="column" fxLayoutAlign="start">
+                            <div class="example-button-row search-filter-input">
+
+                                <div class="header-field-activate-box">
+                                    <h3 class="title-header">SITE SUMMARY</h3>
+                                    <div class="vl">
+                                        <h1>12</h1>
+                                        <h2 class="text">year achived</h2>
+                                    </div>
+                                    <div class="vl-line"></div>
+                                    <!-- <h1>872</h1> -->
+                                    <div class="vl">
+                                        <h1>889</h1>
+                                        <h2 class="text">media uploads</h2>
+                                    </div>
+                                    <div class="vl-line"></div>
+                                    <div class="vl">
+                                        <h1>1478</h1>
+                                        <h2 class="text">interactive search</h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div fxLayout="row" class="account-info">
+                                <div class="vl2" fxLayout="column">
+                                    <h4>access Type:</h4>
+                                    <h5 class="text2">site access</h5>
+                                    <div fxLayout="row">
+                                        <button mat-raised-button class="button-filter btn-light-account">Activate</button>
+                                    </div>
+                                    <br><br><br>
+                                    <h4>site name:</h4>
+                                    <h5 class="text2">idea city high school</h5>
+                                </div>
+                                <div class="vl-line2"></div>
+                                <div class="vl3" fxLayout="column">
+                                    <h4>plan:</h4>
+                                    <h5 class="text2">3 YEAR PLAN | expire August 31 2023</h5>
+                                    <br><br><br>
+                                    <h4>player count:</h4>
+                                    <h5 class="text2">5 player authentications</h5>
+                                    <div fxLayout="row">
+                                        <button mat-raised-button class="button-filter btn-light-account">player Activate</button>
+                                    </div>
+                                    <br><br><br>
+                                    <h4>suport plan:</h4>
+                                    <h5 class="text2">SILVER suport plan</h5>
+                                    <div fxLayout="row">
+                                        <button mat-raised-button class="button-filter btn-light-account">Activate plan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fuse-widget>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

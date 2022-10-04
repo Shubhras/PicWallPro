@@ -1,0 +1,209 @@
+@import "src/@fuse/scss/fuse";
+@media only screen and (min-width: 1200px) {
+    .mat-dialog-container {
+        min-width: 449px!important;
+    }
+}
+
+#unit-change {
+    .mat-header-name {
+        text-align: left;
+        padding-left: 3px;
+    }
+    .mat-cell-name {
+        text-align: left;
+        padding-left: 3px;
+    }
+    .mat-header-action {
+        padding-right: 0px;
+        width: 70px;
+    }
+    .mat-cell-action {
+        padding-right: 2px;
+    }
+    .mat-icon-edit {
+        font-size: 18px;
+        min-height: 25px;
+        height: 25px;
+        border-radius: 4px;
+        background-color: #3972b9e8;
+        color: white;
+        margin-left: 4px;
+    }
+    .mat-icon-clear {
+        font-size: 18px;
+        min-height: 25px;
+        height: 25px;
+        border-radius: 4px;
+        background-color: #f44336;
+        color: white;
+        margin-left: 4px;
+    }
+}
+
+// responsive start
+@media (min-width: 601px) and (max-width: 767px) {
+    .addunit-dial {
+        .mat-dialog-container {
+            min-width: 309px !important;
+        }
+    }
+}
+
+@media (min-width: 1101px) and (max-width: 1199px) {
+    .addunit-dial {
+        .mat-dialog-container {
+            min-width: 449px !important;
+        }
+    }
+}
+
+.mat-select-trigger {
+    height: 50px;
+    padding-top: 10px;
+}
+
+// responsive end
+// .filter {
+//     margin-top: 10px;
+//     height: 3.125em;
+// }
+.add_icon {
+    float: right;
+    margin-right: -90px;
+    margin-top: 35px;
+    font-size: 39px;
+}
+
+.form-control {
+    width: 150px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.header-field-activate-box {
+    width: 539px;
+    height: 174px;
+    border: 1px solid #767575;
+    border-radius: 3px;
+    padding: 14px;
+    margin-top: 20px;
+    color: #1c5e97;
+}
+
+.header-field-activate-section2 {
+    width: 539px;
+    height: 174px;
+    // border: 1px solid #767575;
+    border-radius: 3px;
+    padding: 14px;
+    margin-top: 20px;
+    color: #1c5e97;
+}
+
+h3.title-header {
+    // margin-left: 74px;
+    // margin-top: 14px;
+    text-align: center;
+}
+
+.btn-light-account {
+    // width: 200px;
+    margin-left: 50px;
+    background-color: #1c5e97;
+}
+
+.input-width {
+    width: 250px;
+}
+
+.vl {
+    float: left;
+    margin: 0px;
+    margin-top: -22px;
+    margin-left: 30px;
+    text-align: center;
+}
+
+.vl-line {
+    border-left: 1px solid black;
+    height: 59px;
+    float: left;
+    margin-left: 22px;
+}
+
+h2.text {
+    color: black;
+    /* margin-left: -6px; */
+    font-size: 15px;
+}
+
+// @media only screen and (min-width: 320px) {
+//     .header-field-activate {
+//         width: 539px;
+//         height: 174px;
+//         border: 1px solid #767575;
+//         border-radius: 3px;
+//         padding: 14px;
+//         margin-top: 20px;
+//         color: #1c5e97;
+//     }
+//     .header-field-activate-section2 {
+//         width: 539px;
+//         height: 174px;
+//         // border: 1px solid #767575;
+//         border-radius: 3px;
+//         padding: 14px;
+//         margin-top: 20px;
+//         color: #1c5e97;
+//     }
+//     h3.title-header {
+//         // margin-left: 74px;
+//         // margin-top: 14px;
+//         text-align: center;
+//     }
+//     .btn-light {
+//         width: 200px;
+//         background-color: #1c5e97;
+//     }
+//     .input-width {
+//         width: 250px;
+// }
+.vl2 {
+    float: left;
+    width: 250px;
+    margin: 0px;
+    margin-top: -22px;
+    line-height: 1px;
+    // margin-left: 30px;
+    // text-align: center;
+}
+
+.vl3 {
+    float: left;
+    width: 250px;
+    margin: 0px;
+    margin-top: -22px;
+    line-height: 1px;
+    margin-left: 50px;
+    // text-align: center;
+}
+
+.vl-line2 {
+    border-left: 1px solid black;
+    height: 250px;
+    float: left;
+    margin-left: 22px;
+}
+
+h2.text2 {
+    color: black;
+    /* margin-left: -6px; */
+    font-size: 15px;
+}
+
+// }
+.account-info {
+    padding: 20px;
+    margin-top: 61px;
+}
