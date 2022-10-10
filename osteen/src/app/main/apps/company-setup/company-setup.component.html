@@ -6,12 +6,12 @@
         </div>
         <div id="company-setup-form-wrapper" style="display:flex; flex: 0 0 auto;" fxLayoutAlign="center center" fxFlex="100" fxLayout="row">
             <div id="company-setup-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}" fxFlex="50" style="align-self: flex-start;height: 740px;">
-                <div class="company-header">School Profile</div>
+                <div class="company-header">Division</div>
                 <mat-vertical-stepper [linear]="isLinear" #stepper id="stepper">
                     <mat-step [stepControl]="companyFormGroup">
                         <form [formGroup]="companyFormGroup" (ngSubmit)="companyProfileAdd()" autocomplete="off" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto">
                             <ng-template matStepLabel>
-                                <div (click)="panelnext0()" class="panel-link"> Enter details of your School including the address.
+                                <div (click)="panelnext0()" class="panel-link"> Enter details of your Campus including the address.
                                     <!-- <mat-icon class="info_icon" matTooltip="Enter name of company with logo"
                                 matTooltipPosition="right">info    
                             </mat-icon> -->
@@ -25,9 +25,9 @@
                             </ng-template>
                             <div [fxLayout]="direction" fxLayout.xs="column" fxLayoutAlign="center center" fxFlex="1 0 auto">
                                 <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
-                                    <mat-label>School name</mat-label>
+                                    <mat-label>Division Name</mat-label>
                                     <input matInput formControlName="company_name">
-                                    <mat-error>School name is required</mat-error>
+                                    <mat-error>Division Name is required</mat-error>
                                 </mat-form-field>
 
                                 <div class="company-info company-image" fxLayout="column" fxFlex="50" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center">
@@ -44,10 +44,10 @@
                             </div>
                             <div [fxLayout]="direction" fxLayout.xs="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
                                 <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
-                                    <mat-label>School address</mat-label>
+                                    <mat-label>Division Office Address</mat-label>
                                     <textarea matInput formControlName="company_address" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="4">
                                     </textarea>
-                                    <mat-error>School address is required</mat-error>
+                                    <mat-error>Division Office Address is required</mat-error>
                                 </mat-form-field>
                             </div>
 
@@ -66,7 +66,7 @@
                     <mat-step [stepControl]="unitFormGroup">
                         <form [formGroup]="unitFormGroup" (ngSubmit)="companyUnitsAdd()" autocomplete="off" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto">
                             <ng-template matStepLabel *ngIf="companyProfileAddstep == true"> <span (click)="panelnext1()" (click)="companyProfileAdd()" class="panel-link2">Enter
-                                School Branches and Locations.
+                                Campus Name and Location.
 
                                     <mat-icon *ngIf="isfiled2 == true" class="info_icon info_icon2"
                                         matTooltipPosition="right" color="seagreen">check_circle_outline
@@ -126,7 +126,7 @@
                     <!-- test for user -->
                     <mat-step [stepControl]="usrFormGroup">
                         <form [formGroup]="usrFormGroup" (ngSubmit)="companyUsrAdd()" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto">
-                            <ng-template matStepLabel><span (click)="panelnext2()" (click)="companyUnitsAdd()" class="panel-link3">Create School Admin
+                            <ng-template matStepLabel><span (click)="panelnext2()" (click)="companyUnitsAdd()" class="panel-link3">Create Campus Admin
 
                                     <mat-icon *ngIf="isfiled3 == true" class="info_icon info_icon2"
                                         matTooltipPosition="right" color="seagreen">check_circle_outline
@@ -142,13 +142,13 @@
                                         </div>
                                         <div [fxLayout]="direction" fxLayout.xs="column" fxLayoutAlign="start center" fxFlex="1 0 auto" class="depsec">
                                             <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
-                                                <mat-label>School Branch</mat-label>
+                                                <mat-label>Campus Name</mat-label>
                                                 <mat-select matNativeControl placeholder="Unit" formControlName="multi_unit_id">
                                                     <mat-option [value]="unit.id" *ngFor="let unit of unitsData">
                                                         {{unit.unit_name}}
                                                     </mat-option>
                                                 </mat-select>
-                                                <mat-error>School Branch is required</mat-error>
+                                                <mat-error>Campus Name is required</mat-error>
                                             </mat-form-field>
                                             <!-- <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                                                 <mat-label>Department</mat-label>
@@ -157,14 +157,14 @@
                                             </mat-form-field> -->
 
                                             <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
-                                                <mat-label>Branch Admin</mat-label>
+                                                <mat-label>Campus Admin</mat-label>
                                                 <input matInput formControlName="name">
-                                                <mat-error>Branch Admin is required</mat-error>
+                                                <mat-error>Campus Admin is required</mat-error>
                                             </mat-form-field>
                                             <mat-form-field appearance="outline" fxFlex="47" class="pl-4">
                                                 <mat-label>User email</mat-label>
                                                 <input matInput formControlName="email">
-                                                <mat-error>Name is required</mat-error>
+                                                <mat-error>User email is required</mat-error>
                                             </mat-form-field>
                                             <!-- <mat-form-field appearance="outline" fxFlex="30" class="pr-4">
                                                 <mat-label>User role</mat-label>
@@ -385,7 +385,7 @@
                                 </div>
                                 <div [fxLayout]="direction" fxLayout.xs="column" fxLayoutAlign="start center" fxFlex="1 0 auto" class="description">
                                     <div fxFlex="75" fxLayoutAlign="start center">
-                                        <!-- < Enter user list -->
+                                        <! < Enter user list -->
                     <!-- </div>
 
                                 </div>
@@ -417,13 +417,13 @@
                             <mat-expansion-panel [expanded]="stepexpand === 0" (opened)="setStep(stepexpand)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        <p style="white-space: nowrap;">1. Enter details of your Organization including the address.</p>
+                                        <p style="white-space: nowrap;">1. Enter details of your Campus including the address.</p>
                                     </mat-panel-title>
                                     <mat-panel-description>
 
                                     </mat-panel-description>
                                 </mat-expansion-panel-header>
-                                <p>Please enter the name of your Organization/ Company and also the address.</p>
+                                <p>Please enter the name of your Campus name and also the address.</p>
                                 <!-- <mat-form-field appearance="fill">
                         <mat-label>Age</mat-label>
                         <input matInput type="number" min="1"> -->
@@ -436,14 +436,14 @@
                             <mat-expansion-panel [expanded]="stepexpand === 1" (opened)="setStep(stepexpand)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        2. Enter Business Units and Locations.
+                                        2. Enter Campus Name and Locations.
                                     </mat-panel-title>
                                     <!-- <mat-panel-description>
                           Type the country name
                           <mat-icon>map</mat-icon> 
                         </mat-panel-description>-->
                                 </mat-expansion-panel-header>
-                                <p>If you want to enter other locations addresses of your organization, now you can do it, Else you can enter these details later after the registration process is over.
+                                <p>If you want to enter other locations addresses of your Campus, now you can do it, Else you can enter these details later after the registration process is over.
                                 </p>
                                 <!-- <mat-form-field appearance="fill">
                         <mat-label>Country</mat-label>
@@ -460,14 +460,14 @@
                             <mat-expansion-panel [expanded]="stepexpand === 2" (opened)="setStep(stepexpand)">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
-                                        3. Create Departments & Department Head.
+                                        3. Create Campus & Campus Head.
                                     </mat-panel-title>
                                     <mat-panel-description>
                                         <mat-icon style="color: black;">arrow</mat-icon>
                                     </mat-panel-description>
                                 </mat-expansion-panel-header>
-                                <p>Please enter the name of the user, Department and also the role of the user. All users should be registered in the Prima Plus tool using this menu. You can enter users names at a later stage as well. However, you need to
-                                    make at least one entry to start the process.</p>
+                                <p>Please enter the name of the user, Campus and also the role of the user. All users should be registered in the Prima Plus tool using this menu. You can enter users names at a later stage as well. However, you need to make
+                                    at least one entry to start the process.</p>
                                 <!-- <mat-form-field appearance="fill">
                           <mat-label>Age</mat-label>
                           <input matInput type="number" min="1"> -->

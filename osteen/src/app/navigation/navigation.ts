@@ -63,7 +63,7 @@ if (userModulePermission) {
         // map childrenmodules array
         for (let i = 0; i < childrensModules.length; i++) {
             if (childrensModules[i].parent === parentData.id) {
-                parentModule['type'] = 'collapsable';
+                // parentModule['type'] = 'collapsable';
                 delete parentModule['url'];
                 let child = childrensModules[i];
                 const childrensModule = {};
@@ -72,6 +72,8 @@ if (userModulePermission) {
                 childrensModule['type'] = 'item';
                 childrensModule['url'] = '/apps/' + child.display_url;
                 childrensModule['children'] = [];
+                console.log('ttttttttt',childrensModule);
+
                 // for (var j = 0; j < grandChildrenModules.length; ++j) {
                 //     if (grandChildrenModules[j].parent === childrensModules[i].id) {
                 //         childrensModule['type'] = 'collapsable';
@@ -124,7 +126,21 @@ if (userModulePermission) {
         parentModulesStore.push(parentModule);
     });
 
+const role_id = currentUser.role_id;
+for ( const item of childrens )
+        {
+            console.log('rrrrrrrr',item);
 
+            if ( item.type === 'item' )
+            {
+                childrens.push(item);
+
+                console.log('rrrrrrrr',childrens);
+                continue;
+            }
+
+        }   
+if (role_id == 1 || role_id == 2 || role_id == 3 || role_id == 4) {
     // schools
 console.log('childrens',childrens);
 
@@ -139,7 +155,7 @@ console.log('childrens',childrens);
             //     url: '/apps/'
             // },
             {
-                id: '1',
+                id: 'PicWall Photo',
                 title: 'PicWall Photo',
                 translate: 'NAV.SCRUMBOARD',
                 type: 'item',
@@ -147,7 +163,7 @@ console.log('childrens',childrens);
                 url: '/apps/picwall-photo'
             },
             {
-                id: '1',
+                id: 'People',
                 title: 'People',
                 translate: 'NAV.SCRUMBOARD',
                 type: 'item',
@@ -155,7 +171,7 @@ console.log('childrens',childrens);
                 url: '/apps/people'
             },
             {
-                id: '1',
+                id: 'Player Setup',
                 title: 'Player Setup',
                 translate: 'NAV.SCRUMBOARD',
                 type: 'item',
@@ -163,7 +179,7 @@ console.log('childrens',childrens);
                 url: '/apps/player-setup'
             },
             {
-                id: '1',
+                id: 'Branding',
                 title: 'Branding',
                 translate: 'NAV.SCRUMBOARD',
                 type: 'item',
@@ -171,16 +187,17 @@ console.log('childrens',childrens);
                 url: '/apps/branding'
             },
             {
-                id: '1',
+                id: 'Account',
                 title: 'Account',
                 translate: 'NAV.SCRUMBOARD',
                 type: 'item',
-                icon: 'home',
+                icon: 'person_outline',
                 url: '/apps/account'
             },                      
         );
+        }
+        
     
-
     //     {
     //         id: 'prima-welcomes',
     //         title: 'Dashboard',
@@ -248,8 +265,7 @@ console.log('childrens',childrens);
 //         }
 //    ); */
 //     // L1 
-    const role_id = currentUser.role_id;
-    console.log('role_id', role_id);
+
    
     // if (role_id == 1 || role_id == 2 || role_id == 3 || role_id == 4) {
     //     childrens.unshift(
@@ -576,4 +592,5 @@ export const navigation: FuseNavigation[] = [
         icon: 'apps',
         children: childrens
     }
+    
 ];

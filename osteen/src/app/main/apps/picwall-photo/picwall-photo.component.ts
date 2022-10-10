@@ -313,6 +313,14 @@ export class PicwallPhotoComponent implements OnInit {
             ];
        
     }
+selectedFiles: FileList;
+fileName: string;
+
+detectFiles(event) {
+    this.selectedFiles = event.target.files;
+    this.fileName = this.selectedFiles[0].name;
+    console.log('selectedFiles: ' + this.fileName );
+  }
     ngOnDestroy(): void {
         this.currentYearSubscription.unsubscribe();
 

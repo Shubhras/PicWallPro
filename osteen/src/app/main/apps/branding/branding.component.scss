@@ -75,7 +75,7 @@
     font-size: 39px;
 }
 
-.form-control {
+.form-control1 {
     width: 240px;
     height: 49px;
     margin-left: 4px;
@@ -114,6 +114,24 @@ img.upload_branding_img {
     margin: 10px;
     color: white;
     padding: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.fileUpload1 input.upload1 {
+    display: inline-block;
+}
+
+button.form-control1.upload-button1 {
+    background-color: #2372bb;
+    color: #ffff;
+}
+
+.output1 {
+    text-align: center;
+    margin-left: -60px;
 }
 
 // .color-input {

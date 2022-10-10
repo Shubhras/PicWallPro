@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
             }
             
 
-            console.log('fasfasfaf',userModulePermission);
+            // console.log('fasfasfaf',Module);
             let moduleObj = userModulePermission.filter((Module) => {
                 return Module.display_url === stateUrl;
             })

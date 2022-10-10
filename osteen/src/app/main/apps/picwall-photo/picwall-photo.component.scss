@@ -115,6 +115,19 @@ tr.mat-row.ng-star-inserted:hover {
     overflow: scroll;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+.fileUpload input.upload {
+    display: inline-block;
+}
+
+button.form-control.upload-button.mat-stroked-button {
+    background-color: #2372bb;
+    color: #ffff;
+}
+
 .courses {
     width: 100%;
     max-width: 1370px;

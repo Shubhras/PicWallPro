@@ -29,7 +29,7 @@ export class PeopleProComponent implements OnInit {
   message: any;
   MessageSuccess: any;
   MessageError: any;
-  displayedColumns: string[] = ['name', 'grad_year', 'activites','qoute'];
+  displayedColumns: string[] = ['name', 'grad_year', 'activites','qoute','action'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,6 +37,8 @@ export class PeopleProComponent implements OnInit {
   @ViewChild('content') content: ElementRef;
     id: number;
     peopleData: any;
+    dataSourcepeople: { id: number; name: string; grad_year: string; activites: string; qoute: string; }[];
+    dataSource1: { id: number; name: string; grad_year: string; activites: string; qoute: string; }[];
   /**
    * Constructor
    *
@@ -55,7 +57,8 @@ export class PeopleProComponent implements OnInit {
   * On init
   */
 toppingList =['2022','2021','2023'];
-
+classoflist=['XI CLASS','XII CLASS','XIII CLASS'];
+staffoflist=['Leanne Graham','Ervin Howell','Clementine Bauch'];
   data=[{
     "id": 1,
     "name": "Leanne Graham",
@@ -157,6 +160,19 @@ toppingList =['2022','2021','2023'];
       }
     };
     dialogRef.afterClosed().subscribe(result => {
+    //   console.log('222222222222222',result, this.data.length);
+      const add_unit_obj = {
+         "id": (this.data.length + 1),
+         "name": result.name,
+         "grad_year": result.grad_year,
+         "activites": result.activites,
+         "qoute": result.qoute,
+      }
+      this.data.push(add_unit_obj);
+      this.dataSourcepeople =this.data;
+    // localStorage.setItem('dataSourcepeople', JSON.stringify(this.dataSourcepeople));
+      console.log('333333333333333333', this.dataSourcepeople);
+      this.unitChangeGet();
       this._fuseConfigService.config = {
         layout: {
           navbar: {
@@ -216,7 +232,12 @@ toppingList =['2022','2021','2023'];
     // let login_access_token = this.currentUser.login_access_token;
     // this.userService.getUnitChange(login_access_token, 1).pipe(first()).subscribe(
     //   (data: any) => {
-        this.dataSource = this.data;
+        // this.dataSourcepeople = JSON.parse(localStorage.getItem('dataSourcepeople'));
+        this.dataSource =this.data;
+        // this.dataSource.push(this.dataSource);
+
+        // console.log('23232323', this.dataSourcepeople);
+        
     //     this.unitChangeAllData = this.viewUnitChangeData.data;
     //     this.unitChangeAllData.map((UNIT: any, index: number) => {
     //       UNIT.sr_no = index + 1;
