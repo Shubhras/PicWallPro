@@ -4,4 +4,4 @@ RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 
-RewriteRule ^(.*) /stagebusinessplus/osteen/dist/index.html [NC,L]
+RewriteRule ^(.*) /PicWallPro/osteen/dist/index.html [NC,L]

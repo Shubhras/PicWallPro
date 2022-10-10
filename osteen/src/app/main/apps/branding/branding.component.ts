@@ -26,6 +26,7 @@ export class BrandingComponent implements OnInit {
   unitChangeAllData: any;
   //module:any;
   status_code: any;
+  test: any;
   message: any;
   MessageSuccess: any;
   MessageError: any;
