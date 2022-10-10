@@ -39,10 +39,10 @@ yarn-error.log
 
 # Laravel 4 specific
 bootstrap/compiled.php
-app/storage/
+# app/storage/
 
 # Laravel 5 & Lumen specific
-public/storage
+# public/storage
 public/hot
 storage/*.key
 .env
@@ -158,7 +158,7 @@ typings/
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
-# .cache
+.cache
 
 # next.js build output
 .next
