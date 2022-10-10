@@ -50,9 +50,23 @@ export class AddUnitDialog {
     }
     AddUnitSubmit() {
 
+        console.log('11111111111111111111',this.AddUnitForm);
+        // localStorage.setItem('peopleData', JSON.stringify(this.AddUnitForm.value));
+        this.dialogRef.close(this.AddUnitForm.value);
+        
+    //     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    //     if(existingEntries == null) existingEntries = [];
+    //     // var testObject ={username:this.username, 
+    //     // mobile:this.mobile,
+    //     // email:this.email,
+    //     // type:this.type,
+    //     // password:this.password};
+        
+    //     localStorage.setItem('testObject', JSON.stringify(this.AddUnitForm));
+    //     existingEntries.push(testObject);
 
-        console.log('form value',this.AddUnitForm.value);
-     localStorage.setItem('peopleData', JSON.stringify(this.AddUnitForm.value));
+    //     localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+    //     console.log('form value',this.AddUnitForm.value);
 
         // this.submitted = true;
         // stop here if AddUnitForm is invalid
@@ -81,3 +95,7 @@ export class AddUnitDialog {
         //     });
     }
 }
+function testObject(testObject: any) {
+   return localStorage.setItem("allEntries", JSON.stringify(testObject));
+}
+

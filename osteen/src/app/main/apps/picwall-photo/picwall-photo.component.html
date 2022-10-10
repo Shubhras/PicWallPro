@@ -39,24 +39,29 @@
     </div> -->
     <div class="content" fxLayout="row wrap" class="filterrow" fxLayoutAlign="center right">
         <div class="form-group" fxLayoutAlign="center center">
-            <!-- <label for="power">Hero Power</label> -->
+            <label for="power">CLASSES</label>
             <select class="form-control" id="power1" name="power1">
                 <option *ngFor="let classes of class" [value]="pow">{{classes}}</option>
             </select>
         </div>
+        &nbsp; &nbsp;
         <div class="form-group" fxLayoutAlign="center center">
-            <!-- <label for="power">Hero Power</label> -->
+            <label for="power">YEARS</label>
             <select class="form-control" id="power1" name="power1">
                 <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
             </select>
         </div>
         &nbsp; &nbsp;
-        <div class="form-group" fxLayoutAlign="center center">
+        <div class="form-group fileUpload" fxLayoutAlign="center center">
             <button mat-stroked-button class="form-control upload-button">
-                <input type="file"  >
+                <label class="upload">
+                    <input  type="file" (change)="detectFiles($event)"/>
+                  Upload Media
+                  </label>
                  </button>
-        </div>
+            <div class="output">{{ fileName }} </div>
 
+        </div>
     </div>
     <div class="content" fxLayout="row wrap">
         <div class="friend" fxFlex="15" fxFlex.gt-md="10" *ngFor="let image of images">

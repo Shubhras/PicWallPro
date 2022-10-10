@@ -20,11 +20,24 @@
 
                         <div class="content" fxLayout="row wrap">
                             <div class="friend" fxFlex="50">
-                                <img class="upload_branding_img" src="assets/images/avatars/image-icon.png">
+                                <ng-container *ngIf="url;  then iAmDone; else iAmNotDone">
+                                </ng-container>
+
+                                <ng-template #iAmDone>
+                                    <div><img class="upload_branding_img" [src]="url" *ngIf="url"></div>
+                                </ng-template>
+
+                                <ng-template #iAmNotDone>
+                                    <img class="upload_branding_img" src="assets/images/avatars/image-icon.png">
+                                </ng-template>
                                 <br>
-                                <button mat-stroked-button class="form-control upload-button">
-                                    <input type="file"  >
-                                     </button>
+                                <button mat-stroked-button class="form-control1 upload-button1 fileUpload1">
+                                    <label class="upload1">
+                                        <input  type="file" (change)="selectFile($event)"/>
+                                      Upload Media
+                                      </label>
+                                    </button>
+                                <div class="output1">{{ fileName }} </div>
                                 <h3 class="mt-24 mb-8">Background color:</h3>
                                 <!-- <fuse-material-color-picker class="mb-16">
                                 </fuse-material-color-picker> -->

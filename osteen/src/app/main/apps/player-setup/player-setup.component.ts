@@ -66,28 +66,28 @@ toppingList =['2022','2021','2023'];
     "id": 2,
     "name": "Ervin Howell",
     "status": "Online",
-    "main_content": "sports playlist 2022",
+    "main_content": "Staff of",
     "ip_address": "116.206.149.22"
   },
   {
     "id": 3,
     "name": "Clementine Bauch",
     "status": "Online",
-    "main_content": "sports playlist 2022",
+    "main_content": "Sports Teams",
     "ip_address": "116.206.149.22"
   },
   {
     "id": 4,
     "name": "Patricia Lebsack",
     "status": "Online",
-    "main_content": "sports playlist 2022",
+    "main_content": "Events",
     "ip_address": "116.206.149.22"
   },
   {
     "id": 5,
     "name": "Chelsey Dietrich",
     "status": "Online",
-    "main_content": "Class of",
+    "main_content": "Random",
     "ip_address": "116.206.149.22"
   }
   

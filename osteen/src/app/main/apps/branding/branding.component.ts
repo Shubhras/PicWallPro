@@ -36,6 +36,8 @@ export class BrandingComponent implements OnInit {
   @ViewChild('TABLE') table: ElementRef;
   @ViewChild('content') content: ElementRef;
     id: number;
+    userFile: any;
+    imageSelected: any;
   /**
    * Constructor
    *
@@ -55,7 +57,40 @@ export class BrandingComponent implements OnInit {
   */
 toppingList =['2022','2021','2023'];
 
-  
+  selectedFiles: FileList;
+fileName: string;
+
+detectFiles(event) {
+    this.selectedFiles = event.target.files;
+    this.fileName = this.selectedFiles[0].name;
+    console.log('selectedFiles: ' + this.fileName );
+  }
+  imageSrc: string;
+  url: any; //Angular 11, for stricter type
+	msg = "";
+	
+	//selectFile(event) { //Angular 8
+	selectFile(event: any) { //Angular 11, for stricter type
+		if(!event.target.files[0] || event.target.files[0].length == 0) {
+			this.msg = 'You must select an image';
+			return;
+		}
+		
+		var mimeType = event.target.files[0].type;
+		
+		if (mimeType.match(/image\/*/) == null) {
+			this.msg = "Only images are supported";
+			return;
+		}
+		
+		var reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		
+		reader.onload = (_event) => {
+			this.msg = "";
+			this.url = reader.result; 
+		}
+	}
   ngOnInit(): void {
     //this.dataSource.sort = this.sort;
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

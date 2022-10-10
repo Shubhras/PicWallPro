@@ -13,8 +13,7 @@
                 <div class="title">Edit Profile</div>
             </header>
             <div class="content">
-                <form fxLayout="column" fxLayoutAlign="center" fxFlex="100" name="profileForm" [formGroup]="profileForm"
-                    (ngSubmit)="editProfile()" novalidate>
+                <form fxLayout="column" fxLayoutAlign="center" fxFlex="100" name="profileForm" [formGroup]="profileForm" (ngSubmit)="editProfile()" novalidate>
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                         <mat-form-field fxFlex="50" class="" appearance="outline">
                             <mat-label>Name</mat-label>
@@ -48,9 +47,7 @@
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                         <mat-form-field fxFlex="50" class="" appearance="outline">
                             <mat-label>Unit</mat-label>
-                            <mat-select matNativeControl formControlName="multi_unit_id"
-                                (selectionChange)="departmentGet($event.value, '')" [compareWith]="compareFn" multiple
-                                [disabled]="true">
+                            <mat-select matNativeControl formControlName="multi_unit_id" (selectionChange)="departmentGet($event.value, '')" [compareWith]="compareFn" multiple [disabled]="true">
                                 <mat-option [value]="unit.id" *ngFor="let unit of unitsData">{{unit.unit_name}}
                                 </mat-option>
                             </mat-select>
@@ -58,12 +55,8 @@
                         </mat-form-field>
                         <mat-form-field fxFlex="50" class="pl-8" appearance="outline">
                             <mat-label>Department</mat-label>
-                            <mat-select matNativeControl formControlName="multi_dept_id"
-                                (selectionChange)="sectionGet($event.value, '')" [compareWith]="compareDept" multiple
-                                [disabled]="true">
-                                <mat-option [value]="department.multi_dept_id"
-                                    *ngFor="let department of dataDepartment">{{department.dept_name}}
-                                    ({{department.unit_name}})
+                            <mat-select matNativeControl formControlName="multi_dept_id" (selectionChange)="sectionGet($event.value, '')" [compareWith]="compareDept" multiple [disabled]="true">
+                                <mat-option [value]="department.multi_dept_id" *ngFor="let department of dataDepartment">{{department.dept_name}} ({{department.unit_name}})
                                 </mat-option>
                             </mat-select>
                             <!-- <mat-error>Department is required</mat-error> -->
@@ -72,8 +65,7 @@
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                         <mat-form-field fxFlex="50" class="" appearance="outline">
                             <mat-label>Section</mat-label>
-                            <mat-select matNativeControl formControlName="multi_section_id"
-                                [compareWith]="compareSection" multiple [disabled]="true">
+                            <mat-select matNativeControl formControlName="multi_section_id" [compareWith]="compareSection" multiple [disabled]="true">
                                 <mat-option [value]="section.multi_section_id" *ngFor="let section of dataSections">
                                     {{section.section_name}} ({{section.dept_name}})</mat-option>
                             </mat-select>
@@ -100,8 +92,7 @@
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                         <mat-form-field fxFlex="50" class="" appearance="outline">
                             <mat-label>10-digit Mobile Number</mat-label>
-                            <input matInput formControlName="mobile" [(ngModel)]="userData.mobile" maxlength="10"
-                                (keypress)=mobileValidation($event)>
+                            <input matInput formControlName="mobile" [(ngModel)]="userData.mobile" maxlength="10" (keypress)=mobileValidation($event)>
                             <mat-error *ngIf="profileForm.get('mobile').hasError('required')">
                                 Please fill out this field.
                             </mat-error>
@@ -207,11 +198,11 @@
                     <span>See 454 more...</span>
                 </div>
             </header>
-            <div class="content" fxLayout="row wrap">
+            <!-- <div class="content" fxLayout="row wrap">
                 <div class="friend" fxFlex="20" *ngFor="let friend of about.friends">
                     <img [src]="friend.avatar">
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="profile-box groups" fxLayout="column">
             <header class="accent" fxLayout="row" fxLayoutAlign="space-between center">
@@ -220,12 +211,11 @@
                 <div class=" actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
                     <!-- <button mat-raised-button color="accent" aria-label="Follow">Follow</button> -->
                     <!-- <button mat-raised-button color="primary" aria-label="Send Message">Send Message</button> -->
-                    <button mat-raised-button class="" (click)="CreateGroupPopupOpen()" >Create Group +</button>
+                    <button mat-raised-button class="" (click)="CreateGroupPopupOpen()">Create Group +</button>
                 </div>
             </header>
             <div class="content">
-                <div class="group" *ngFor="let group of profile_groups" fxLayout="row"
-                    fxLayoutAlign="space-between center">
+                <div class="group" *ngFor="let group of profile_groups" fxLayout="row" fxLayoutAlign="space-between center">
                     <div fxLayout="row" fxLayoutAlign="start center">
                         <div class="logo">{{group.group_name.substring(0,1)}}</div>
                         <div>
