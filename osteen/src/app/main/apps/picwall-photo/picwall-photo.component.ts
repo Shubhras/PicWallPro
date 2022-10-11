@@ -191,8 +191,8 @@ export class PicwallPhotoComponent implements OnInit {
         this.userModulePermission = JSON.parse(localStorage.getItem('userModulePermission'));
         this.currentYearSubscription = this.dataYearService.currentMessageYear.subscribe(messageYear => {
             this.userSelectedYear = messageYear;
-            this.userSelectedYearFull = this.userSelectedYear;
-            this.userSelectedYearHalf = this.userSelectedYear.toString().substr(2, 2);
+            // this.userSelectedYearFull = this.userSelectedYear;
+            // this.userSelectedYearHalf = this.userSelectedYear.toString().substr(2, 2);
             this.currentYearPlusOne = Number(this.userSelectedYearHalf) + 1;
             // this.userService.getAllDepartment(this.login_access_token, this.unit_id).pipe(first()).subscribe(
             //   (data: any) => {
