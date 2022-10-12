@@ -126,6 +126,8 @@ input[type="file"] {
 button.form-control.upload-button.mat-stroked-button {
     background-color: #2372bb;
     color: #ffff;
+    margin-top: 8px;
+    height: 52px;
 }
 
 .courses {
@@ -934,4 +936,8 @@ select#power {
     height: 40px;
     width: 216px;
     // margin-top: 10px;
+}
+
+label.ng-tns-c38-12 {
+    margin-left: 15px;
 }

@@ -20,7 +20,7 @@ import { STATUSES } from '../_constants';
 import { trigger } from '@angular/animations';
 import { map } from 'lodash';
 import { DatePipe } from '@angular/common';
-
+ 
 declare var $: any;
 export interface DialogData {
     animal: string;
@@ -105,8 +105,8 @@ export class PicwallPhotoComponent implements OnInit {
     dataDepartment2: any;
     showkpireminders: boolean;
     images: { name: string; avatar: string; }[];
-    powers: string[];
-    class: string[];
+    category: string[];
+    years: string[];
     /**
      * Constructor
      *
@@ -221,9 +221,9 @@ export class PicwallPhotoComponent implements OnInit {
         });
         //this.userLisetGet();
         //this.selectedYearVal = this.currentYearFull;
-      this.class = ['10th', '11th','12th'];
-        this.powers = ['2013', '2014','2015', '2016','2017', '2018',
-    ];
+        this.years  =['2017','2018','2019','2020','2021','2022'];
+        this.category=['Class of', 'Staff of','Jr Basketball Team','Sr Basketball Team','Jr Football Team','Sr Football Team','Jr Soccer Team'];
+
          this.images = [
                 {
                     'name': 'Garry Newman',

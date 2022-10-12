@@ -56,8 +56,8 @@ export class PeopleProComponent implements OnInit {
   /**
   * On init
   */
-toppingList =['2022','2021','2023'];
-classoflist=['XI CLASS','XII CLASS','XIII CLASS'];
+years =['2017','2018','2019','2020','2021','2022'];
+category=['Class of', 'Staff of','Jr Basketball Team','Sr Basketball Team','Jr Football Team','Sr Football Team','Jr Soccer Team'];
 staffoflist=['Leanne Graham','Ervin Howell','Clementine Bauch'];
   data=[{
     "id": 1,
@@ -136,7 +136,7 @@ staffoflist=['Leanne Graham','Ervin Howell','Clementine Bauch'];
     this.data;
     // this.data.push(this.peopleData);
     console.log('jk', this.peopleData);
-    this.toppingList;
+    // this.toppingList;
     console.log('ii',this.data);
     
     // this.id = this.data.id;
