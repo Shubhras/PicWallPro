@@ -95,6 +95,14 @@ export class UserService {
   singleUserDetails(login_token: string, company_id: any, user_id: number) {
     return this.http.post(`${API_URL}/api-get-single-user-details`, { login_access_token: login_token, company_id: company_id, user_id: user_id });
   }
+  // updateProfiles(data: FormData) {
+  //   return this.http.post(`${API_URL}/api-update-profiles`, data);
+  // }
+  
+  multiProfiles(login_token: string, company_id: any, user_id: number) {
+    return this.http.post(`${API_URL}/api-get-profiles`, { login_access_token: login_token, company_id: company_id, user_id: user_id });
+  }
+ 
   GetUserProfile(login_access_token: string, role_id: number, user_id: number) {
     return this.http.post(`${API_URL}/api-view-profile`, { login_access_token: login_access_token, role_id: role_id, user_id: user_id });
   }

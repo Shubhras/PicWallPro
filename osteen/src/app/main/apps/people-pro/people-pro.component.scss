@@ -1,43 +1,49 @@
 @import "src/@fuse/scss/fuse";
+
 @media only screen and (min-width: 1200px) {
     .mat-dialog-container {
-        min-width: 449px!important;
+        min-width: 449px !important;
     }
 }
 
 #unit-change {
     .mat-header-name {
-        text-align: left;
+        text-align  : left;
         padding-left: 3px;
     }
+
     .mat-cell-name {
-        text-align: left;
+        text-align  : left;
         padding-left: 3px;
     }
+
     .mat-header-action {
         padding-right: 0px;
-        width: 70px;
+        width        : 70px;
     }
+
     .mat-cell-action {
         padding-right: 2px;
     }
+
     .mat-icon-edit {
-        font-size: 18px;
-        min-height: 25px;
-        height: 25px;
-        border-radius: 4px;
+        font-size       : 18px;
+        min-height      : 25px;
+        height          : 25px;
+        border-radius   : 4px;
         background-color: #3972b9e8;
-        color: white;
-        margin-left: 4px;
+        color           : white;
+        margin-left     : 4px;
     }
+
     .mat-icon-clear {
-        font-size: 18px;
-        min-height: 25px;
-        height: 25px;
-        border-radius: 4px;
+        font-size       : 18px;
+        min-height      : 25px;
+        height          : 25px;
+        border-radius   : 4px;
         background-color: #f44336;
-        color: white;
-        margin-left: 4px;
+        color           : white;
+        margin-left     : 4px;
     }
 }
 
@@ -59,7 +65,7 @@
 }
 
 .mat-select-trigger {
-    height: 50px;
+    height     : 50px;
     padding-top: 10px;
 }
 
@@ -69,8 +75,70 @@
 //     height: 3.125em;
 // }
 .add_icon {
-    float: right;
+    float       : right;
     margin-right: -90px;
-    margin-top: 35px;
-    font-size: 39px;
+    margin-top  : 35px;
+    font-size   : 39px;
 }
+
+// .mat-form-field {
+//     margin: 40px 0;
+//     width: 500px !important;
+// }
+.mat-toolbar-single-row {
+    height    : auto !important;
+    background: transparent;
+}
+
+.mat-toolbar-single-row button {
+    width: 200px;
+}
+
+// .mat-form-field {
+//     width: 100%;
+// }
+#uploadFile {
+    top     : 0px;
+    left    : 0px;
+    width   : 100%;
+    z-index : 9;
+    opacity : 0;
+    height  : 100%;
+    cursor  : pointer;
+    position: absolute;
+}
+
+
+.fileUpload input.upload {
+    display: inline-block;
+    cursor : pointer;
+}
+
+button.form-control.upload-button.mat-stroked-button {
+    background-color: #2372bb;
+    color           : #ffff;
+    margin-top      : 35px;
+    height          : 42px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.hy-profile-image {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding      : 4px;
+}
+
+// .upload-record {
+//     margin-top      : 15px;
+//     background-color: #2372bb;
+//     color           : #ffff;
+//     height          : 42px;
+// }

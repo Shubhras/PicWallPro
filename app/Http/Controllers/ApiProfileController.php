@@ -170,6 +170,85 @@ class ApiProfileController extends ResponseApiController
         return $this->sendResponse();
     }
 
+    // public function api_update_profiles(Request $request)
+    // {
+    //     try {
+    //         if ($request->File('photo')->isValid()) {
+
+    //             $name = uniqid() . '.' . $request->photo->getClientOriginalName();
+    //             $destination = $_SERVER["DOCUMENT_ROOT"] . '/storage/profile_picture';
+    //             $request->photo->move($destination, $name);
+
+    //             $string = "123456stringsawexs";
+    //             $extension = pathinfo($name, PATHINFO_EXTENSION);
+    //             $path = $destination . '/' . $name;
+    //             $public = 1;
+    //             $hash = str_shuffle($string);
+
+    //             $request->name = $name;
+    //             $request->extension = $extension;
+    //             $request->path = $path;
+    //             $request->public = $public;
+    //             $request->hash = $hash;
+                
+    //             $image_id = Module::insert("uploads", $request);
+    //             DB::table('employers')->where('user_id', $request->user_id)->update(['photo_id' => $image_id]);
+    //         } else {
+    //             $this->apiResponse['message'] = "Invalid Image Uploaded";
+    //             return $this->sendResponse();
+    //         }
+    //     } catch (Exception $e) {
+    //         $this->apiResponse['message'] = $e->getMessage();
+    //         return $this->sendResponse();
+    //     }
+    //     $this->apiResponse['status'] = "success";
+    //     $this->apiResponse['message'] = "successfully update your profile";
+    //     return $this->sendResponse();
+    // }
+
+    public function api_get_profiles(Request $request)
+    {
+        //   echo "<pre>";  dump($request);exit;
+        // $userdata = [];
+        // $userdata = DB::table('employers')->where('user_id', $request->user_id)->first();
+        try {
+            if (!empty($request->user_id)) {
+                $userdata = DB::table('uploads')
+                    ->select('uploads.name as file_name', 'uploads.hash', 'uploads.user_id')
+                    ->orderBy('updated_at', 'desc')
+                    ->where('uploads.deleted_at', null)
+                    ->where('user_id', $request->user_id)
+                    ->first();
+                // echo "<pre>";
+                // dump($file_name);exit;
+                // foreach ($userdata as $key => $value) {
+                # code...
+                if (!empty($userdata->file_name)) {
+                    $userdata->profile = url('/') . '/files/' . $userdata->hash . '/' . $userdata->file_name;
+                } else {
+                    $userdata->profile = "";
+                }
+                // }
+                // echo "<pre>";
+                // dump($userdata);
+                $this->apiResponse['status'] = "success";
+                $this->apiResponse['data'] = $userdata;
+                $this->apiResponse['message'] = "User successfully deleted";
+                return $this->sendResponse();
+            } else {
+                $this->apiResponse['message'] = "Invalid Image Uploaded";
+                return $this->sendResponse();
+            }
+        } catch (Exception $e) {
+            $this->apiResponse['message'] = $e->getMessage();
+            return $this->sendResponse();
+        }
+        $this->apiResponse['status'] = "success";
+        $this->apiResponse['data'] = $userdata;
+        $this->apiResponse['message'] = "User successfully deleted";
+        return $this->sendResponse();
+    }
+
     public function api_get_user_details_unit_wise(request $request)
     {
         $dept_data = DB::table('employers')->select('employers.name ', 'employers.user_id', 'units.unit_name')
@@ -356,9 +435,9 @@ class ApiProfileController extends ResponseApiController
             ->where('deleted_at', null)
             ->get();
 
-            $this->apiResponse['status'] = "success";
-            $this->apiResponse['message'] = "get post response !";
-            $this->apiResponse['data'] = $post_data;
+        $this->apiResponse['status'] = "success";
+        $this->apiResponse['message'] = "get post response !";
+        $this->apiResponse['data'] = $post_data;
         return $this->sendResponse();
     }
     public function create_post(Request $request)

@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Subject } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, UserService } from 'app/main/apps/_services';
+
 @Component({
     selector: 'add-unit-dialog',
     templateUrl: 'addunit.component.html',
@@ -32,6 +33,8 @@ export class AddUnitDialog {
         this.dialogRef.close();
     }
     ngOnInit(): void {
+        console.log('add', this.data);
+
         // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         // this.user_id = this.currentUser.data.id;
         // let login_access_token = this.currentUser.login_access_token;
@@ -39,34 +42,36 @@ export class AddUnitDialog {
         this.AddUnitForm = this._formBuilder.group({
             // login_access_token: [login_access_token, Validators.required],
             // user_id: [this.user_id, ],
-            name: ['',],
-            grad_year: ['',],
-            activites: ['',],
+            name: ['', Validators.required],
+            grad_year: ['', Validators.required],
+            activites: ['', Validators.required],
             qoute: ['',],
-            image_url: ['',],
-            // company_id: [company_id, Validators.required],
-            enable: ['Yes',]
+            // image_url: ['',],
         });
     }
     AddUnitSubmit() {
+        if(this.AddUnitForm.invalid){
+            console.log('Invalid form', this.AddUnitForm.value);
+            return;
+        }
 
-        console.log('11111111111111111111',this.AddUnitForm);
+        console.log('11111111111111111111', this.AddUnitForm);
         // localStorage.setItem('peopleData', JSON.stringify(this.AddUnitForm.value));
         this.dialogRef.close(this.AddUnitForm.value);
-        
-    //     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-    //     if(existingEntries == null) existingEntries = [];
-    //     // var testObject ={username:this.username, 
-    //     // mobile:this.mobile,
-    //     // email:this.email,
-    //     // type:this.type,
-    //     // password:this.password};
-        
-    //     localStorage.setItem('testObject', JSON.stringify(this.AddUnitForm));
-    //     existingEntries.push(testObject);
 
-    //     localStorage.setItem("allEntries", JSON.stringify(existingEntries));
-    //     console.log('form value',this.AddUnitForm.value);
+        //     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+        //     if(existingEntries == null) existingEntries = [];
+        //     // var testObject ={username:this.username, 
+        //     // mobile:this.mobile,
+        //     // email:this.email,
+        //     // type:this.type,
+        //     // password:this.password};
+
+        //     localStorage.setItem('testObject', JSON.stringify(this.AddUnitForm));
+        //     existingEntries.push(testObject);
+
+        //     localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+        //     console.log('form value',this.AddUnitForm.value);
 
         // this.submitted = true;
         // stop here if AddUnitForm is invalid
@@ -96,6 +101,6 @@ export class AddUnitDialog {
     }
 }
 function testObject(testObject: any) {
-   return localStorage.setItem("allEntries", JSON.stringify(testObject));
+    return localStorage.setItem("allEntries", JSON.stringify(testObject));
 }
 

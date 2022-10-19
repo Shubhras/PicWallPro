@@ -43,6 +43,7 @@ Route::group(['middleware' => ['Check_Token_And_Validator']], function () {
     Route::post('/api-update-profile-picture', 'ApiProfileController@api_update_profile_picture');
     Route::post('/api-get-single-user-details', 'ApiProfileController@api_get_single_user_details');
 
+    
     //Api authentication route
     Route::post('/api-user-signup-file', 'ApiAuthController@api_user_signup_file');
     Route::post('/api-change-password', 'ApiAuthController@api_change_password');
@@ -264,6 +265,10 @@ Route::group(['middleware' => ['Check_Token_And_Validator']], function () {
     Route::post('/api-new-company-setup', 'ApiNewCompanySetup@api_new_company_setup');
     Route::post('/api-view-new-company-setup', 'ApiNewCompanySetup@api_view_new_company_setup');
 });
+// Handle multi profile pictures
+// Route::post('/api-update-profiles', 'ApiProfileController@api_update_profiles');
+Route::post('/api-get-profiles', 'ApiProfileController@api_get_profiles');
+
 // Handle Groups for user profile
 Route::post('/api-create-group', 'ApiProfileController@api_create_group');
 Route::post('/api-view-profile-joined-group', 'ApiProfileController@api_view_profile_joined_group');
