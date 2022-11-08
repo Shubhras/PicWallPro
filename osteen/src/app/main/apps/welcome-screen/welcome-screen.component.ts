@@ -13,7 +13,6 @@ import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 declare let d3pie: any;
 import * as moment from 'moment';
-import { KpiDefinition } from '../common-dialog/kpi-definition/kpi-definition.component';
 import { DialogComponent } from 'app/main/apps/welcome-screen/newUser.component';
 import { DataYearService } from 'app/layout/components/toolbar/year-select-data.service';
 import { STATUSES } from '../_constants';
@@ -229,14 +228,6 @@ export class WelcomeScreenComponent implements OnInit {
   ngOnDestroy(): void {
     this.currentYearSubscription.unsubscribe();
 
-  }
-
-  kpiDefinitionOpen(element): void {
-    const dialogRef = this.dialog.open(KpiDefinition, {
-      data: element
-    });
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 
   // POPUOOOO

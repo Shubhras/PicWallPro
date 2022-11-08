@@ -15,11 +15,18 @@
                     <input matInput formControlName="name" required>
                     <mat-error>Name is required!</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
+                <!-- <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
                     <mat-label>Grad Year</mat-label>
                     <input matInput type="number" formControlName="grad_year" required>
                     <mat-error>Grad Year is required!</mat-error>
-                </mat-form-field>
+                </mat-form-field> -->
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad test">
+                    <mat-label>Select Grade Years</mat-label>
+                    <mat-select formControlName="grade_year" required>
+                      <mat-option [value]="year" *ngFor="let year of grade_years">{{year}}</mat-option>
+                    </mat-select>
+                    <mat-error>Grade Year is required!</mat-error>
+                  </mat-form-field>
             </div>
             <!-- <div [fxLayout]="direction" fxLayout.xs="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
@@ -27,7 +34,7 @@
             <div [fxLayout]="direction" fxLayout.xs="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                 <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
                     <mat-label>Activities</mat-label>
-                    <input matInput formControlName="activites" required>
+                    <input matInput formControlName="activities" required>
                     <mat-error>Activities is required!</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">

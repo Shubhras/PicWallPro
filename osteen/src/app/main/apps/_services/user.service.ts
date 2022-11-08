@@ -45,7 +45,7 @@ export class UserService {
   }
   signupByFile(data: FormData) {
     // console.log("formdata",data);
-    
+
     return this.http.post(`${API_URL}/api-user-signup-file`, data);
   }
   login(userlogin: any) {
@@ -58,24 +58,39 @@ export class UserService {
   resetPassword(data: any) {
     return this.http.post(`${API_URL}/api-resetpassword-update`, data);
   }
+
+  // students
+  getStudents(login_token: string) {
+    return this.http.post(`${API_URL}/api-get-students`, login_token);
+  }
+
+  addStudents(data: any) {
+    return this.http.post(`${API_URL}/api-add-students`, data);
+  }
+  updateStudents(data: any) {
+    return this.http.post(`${API_URL}/api-update-students`, data);
+  }
+  deleteStudent(data: any) {
+    return this.http.post(`${API_URL}/api-delete-students`, data);
+  }
+  
   reminderActionPlan(login_token: string, unitId: string, companyId: string, deptAlot: any, userID: any) {
     return this.http.post(`${API_URL}/api-strobj-review`, { login_access_token: login_token, unit_id: unitId, company_id: companyId, dept_alot: deptAlot, user_id: userID });
   }
-  reminderKPI(login_token: string, company_id: number, reminder_date: number, reminder_frequency: number, financial_year: string,dept_id:number, unit_id: number) {
-    return this.http.post(`${API_URL}/api-dashboard-review-actual-data`, { login_access_token: login_token, company_id: company_id, reminder_date: reminder_date, reminder_frequency: reminder_frequency, financial_year: financial_year,dept_id:dept_id, unit_id: unit_id });
+  reminderKPI(login_token: string, company_id: number, reminder_date: number, reminder_frequency: number, financial_year: string, dept_id: number, unit_id: number) {
+    return this.http.post(`${API_URL}/api-dashboard-review-actual-data`, { login_access_token: login_token, company_id: company_id, reminder_date: reminder_date, reminder_frequency: reminder_frequency, financial_year: financial_year, dept_id: dept_id, unit_id: unit_id });
   }
   getDepartmentUnit(login_token: string, currentUnitId: string, role_id: any, dept_id: string) {
-    return this.http.post(`${API_URL}/api-get-department`, { login_access_token: login_token, unit_id: currentUnitId,role_id: role_id, dept_id: dept_id });
+    return this.http.post(`${API_URL}/api-get-department`, { login_access_token: login_token, unit_id: currentUnitId, role_id: role_id, dept_id: dept_id });
   }
-  getAllDepartment(login_token:string, unit_id: number){
-    return this.http.post(`${API_URL}/api-get-all-department`, { login_access_token: login_token, unit_id: unit_id});
+  getAllDepartment(login_token: string, unit_id: number) {
+    return this.http.post(`${API_URL}/api-get-all-department`, { login_access_token: login_token, unit_id: unit_id });
   }
   getDepartmentMultiUnit(currentUnitId: string, profile: string) {
     return this.http.post(`${API_URL}/api-get-dept-signup`, { unit_id: currentUnitId, profile: profile });
   }
-  getUserUnitWise(login_token:string, unit_id: number,company_id: number)
-  {
-    return this.http.post(`${API_URL}/api-get-user-details-unit-wise`, {login_access_token: login_token, unit_id: unit_id, company_id: company_id });
+  getUserUnitWise(login_token: string, unit_id: number, company_id: number) {
+    return this.http.post(`${API_URL}/api-get-user-details-unit-wise`, { login_access_token: login_token, unit_id: unit_id, company_id: company_id });
   }
   getSectionDepartment(dept_id: string, company_id: number) {
     return this.http.post(`${API_URL}/get-section`, { dept_id: dept_id, company_id: company_id });
@@ -92,17 +107,20 @@ export class UserService {
   userPictureUpload(data: FormData) {
     return this.http.post(`${API_URL}/api-update-profile-picture`, data);
   }
+  studentPictureUpload(data: FormData) {
+    return this.http.post(`${API_URL}/api-update-student-profile-picture`, data);
+  }
   singleUserDetails(login_token: string, company_id: any, user_id: number) {
     return this.http.post(`${API_URL}/api-get-single-user-details`, { login_access_token: login_token, company_id: company_id, user_id: user_id });
   }
   // updateProfiles(data: FormData) {
   //   return this.http.post(`${API_URL}/api-update-profiles`, data);
   // }
-  
+
   multiProfiles(login_token: string, company_id: any, user_id: number) {
     return this.http.post(`${API_URL}/api-get-profiles`, { login_access_token: login_token, company_id: company_id, user_id: user_id });
   }
- 
+
   GetUserProfile(login_access_token: string, role_id: number, user_id: number) {
     return this.http.post(`${API_URL}/api-view-profile`, { login_access_token: login_access_token, role_id: role_id, user_id: user_id });
   }
@@ -125,11 +143,11 @@ export class UserService {
     return this.http.post(`${API_URL}/api-get-profile-user-by-group-id`, { login_access_token: login_token, role_id: role_id, group_id: group_id });
   }
   getGroupDetails(login_token: string, group_id: number) {
-    return this.http.post(`${API_URL}/api-get-profile-group-details`, { login_access_token: login_token,group_id: group_id });
+    return this.http.post(`${API_URL}/api-get-profile-group-details`, { login_access_token: login_token, group_id: group_id });
   }
- 
-  getAllPost(login_token: string,user_id:number, group_id: number, company_id: number) {
-    return this.http.post(`${API_URL}/api-get_post`, { login_access_token: login_token,user_id: user_id, group_id: group_id, company_id: company_id});
+
+  getAllPost(login_token: string, user_id: number, group_id: number, company_id: number) {
+    return this.http.post(`${API_URL}/api-get_post`, { login_access_token: login_token, user_id: user_id, group_id: group_id, company_id: company_id });
   }
 
   createPost(data: any) {
@@ -405,8 +423,8 @@ export class UserService {
   getkpiTargetActual(login_token: string, company_id: number, kpi_id: number, year: any) {
     return this.http.post(`${API_URL}/api-new-kpi-trackers-track`, { login_access_token: login_token, company_id: company_id, kpi_id: kpi_id, select_year: year });
   }
-  viewActualLateEntry(login_token: string,kpi_id: number) {
-    return this.http.post(`${API_URL}/api-view-kpi-actuals-lateentry`, {login_access_token: login_token, kpi_id: kpi_id});
+  viewActualLateEntry(login_token: string, kpi_id: number) {
+    return this.http.post(`${API_URL}/api-view-kpi-actuals-lateentry`, { login_access_token: login_token, kpi_id: kpi_id });
   }
   editkpiTargetActual(data: any) {
     return this.http.post(`${API_URL}/api-target-actual-update`, data);
@@ -436,7 +454,7 @@ export class UserService {
     return this.http.post(`${API_URL}/api-delete-business-objective`, { login_access_token: login_token, business_objective_id: objective_id });
   }
   getStrengths(login_token: string, selectedYear: any, financialYear: any, unit_id: any, Company_id: any) {
-    return this.http.post(`${API_URL}/api-view-strength`, { login_access_token: login_token, year: selectedYear, fyear: financialYear,unit_id: unit_id, company_id: Company_id });
+    return this.http.post(`${API_URL}/api-view-strength`, { login_access_token: login_token, year: selectedYear, fyear: financialYear, unit_id: unit_id, company_id: Company_id });
   }
   addStrengths(data: FormData) {
     return this.http.post(`${API_URL}/api-add-strength`, data);
@@ -486,8 +504,8 @@ export class UserService {
   strategicDashboardView(login_token: string, unit_id: string, role_id: any, dept_id: any, selectedYear: any, financialYear: any) {
     return this.http.post(`${API_URL}/view-strategic-objectives-dash`, { login_access_token: login_token, unit_id: unit_id, role_id: role_id, dept_id: dept_id, year: selectedYear, fyear: financialYear });
   }
-  strategicGraphView(login_token: string, userSelectedYear:any,companyFinancialYear:any, unit_id: string, role_id: any, dept_id: any) {
-    return this.http.post(`${API_URL}/api-str-obj-grandchart`, { login_access_token: login_token, year:userSelectedYear,fyear: companyFinancialYear, unit_id: unit_id, role_id: role_id, dept_id: dept_id });
+  strategicGraphView(login_token: string, userSelectedYear: any, companyFinancialYear: any, unit_id: string, role_id: any, dept_id: any) {
+    return this.http.post(`${API_URL}/api-str-obj-grandchart`, { login_access_token: login_token, year: userSelectedYear, fyear: companyFinancialYear, unit_id: unit_id, role_id: role_id, dept_id: dept_id });
   }
 
   projectChartView(login_token: string, project_id: any) {
@@ -497,22 +515,22 @@ export class UserService {
   StrategicDataView(login_token: string, unit_id: string, role_id: any, dept_id: any, selectedYear: any, financialYear: any) {
     return this.http.post(`${API_URL}/api-view-strategic-objectives`, { login_access_token: login_token, unit_id: unit_id, role_id: role_id, dept_id: dept_id, year: selectedYear, fyear: financialYear });
   }
-  StrategicGroupStatusView(login_token: string, element:any) {
-    return this.http.post(`${API_URL}/api-view-strategic-objectives-status-bygroup`, { login_access_token: login_token, element:element});
+  StrategicGroupStatusView(login_token: string, element: any) {
+    return this.http.post(`${API_URL}/api-view-strategic-objectives-status-bygroup`, { login_access_token: login_token, element: element });
   }
-  
-  strategicAddSubmit(data: any ) {
+
+  strategicAddSubmit(data: any) {
     return this.http.post(`${API_URL}/api-strategic-objectives`, data);
   }
-  addSoSno(company_id: any, unit_id:any,total_dept: any, dept_id: any,login_token: string) {
-    return this.http.post(`${API_URL}/api-so-sno`, {company_id:company_id, unit_id: unit_id, total_dept:total_dept,dept_id:dept_id, login_access_token: login_token});
+  addSoSno(company_id: any, unit_id: any, total_dept: any, dept_id: any, login_token: string) {
+    return this.http.post(`${API_URL}/api-so-sno`, { company_id: company_id, unit_id: unit_id, total_dept: total_dept, dept_id: dept_id, login_access_token: login_token });
   }
 
   objectivesStepsAdd(data: any) {
     return this.http.post(`${API_URL}/api-add-objectives-steps`, data);
   }
-  objectivesStepsGet( unit_id: any, company_id: number, user_id: any) {
-    return this.http.post(`${API_URL}/api-get-objectives-steps`, {unit_id: unit_id, company_id: company_id, user_id: user_id });
+  objectivesStepsGet(unit_id: any, company_id: number, user_id: any) {
+    return this.http.post(`${API_URL}/api-get-objectives-steps`, { unit_id: unit_id, company_id: company_id, user_id: user_id });
   }
 
   StrategicDataDelete(login_token: string, strategic_objectives_id: number, user_id: number) {
@@ -570,6 +588,8 @@ export class UserService {
   getActionPlans(login_token: string, unit_id: string, initiatives_id: string) {
     return this.http.post(`${API_URL}/api-get-actionplans`, { login_access_token: login_token, unit_id: unit_id, initiatives_id: initiatives_id });
   }
+
+
   getActionPlansComment(login_token: string, action_plan_id: number) {
     return this.http.post(`${API_URL}/api-action-plan-comment`, { login_access_token: login_token, action_plan_id: action_plan_id });
   }
@@ -586,7 +606,7 @@ export class UserService {
     return this.http.post(`${API_URL}/delete-initiative`, { login_access_token: login_token, initiatives_id: initiatives_id, user_id: user_id });
   }
   initiativeView(login_token: string, unit_id: string, company_id: string, role_id: any, dept_id: any, selectedYear: any, financialYear: any) {
-    return this.http.post(`${API_URL}/api-view-initiative`, { login_access_token: login_token, unit_id: unit_id,company_id: company_id, role_id: role_id, dept_id: dept_id, year: selectedYear, fyear: financialYear });
+    return this.http.post(`${API_URL}/api-view-initiative`, { login_access_token: login_token, unit_id: unit_id, company_id: company_id, role_id: role_id, dept_id: dept_id, year: selectedYear, fyear: financialYear });
   }
   getUserCommentInitiatives(login_token: string, initiatives_id: number) {
     return this.http.post(`${API_URL}/api-initiatives-update-comment`, { login_access_token: login_token, initiatives_id: initiatives_id });
@@ -621,7 +641,7 @@ export class UserService {
   performanceTypeChange(data: FormData) {
     return this.http.post(`${API_URL}/api-update-performance-kpi`, data);
   }
-  performanceKpiDashboard(login_token: string, unit_id: string, dept_id:any, selectedYear: any, financialYear: any) {
+  performanceKpiDashboard(login_token: string, unit_id: string, dept_id: any, selectedYear: any, financialYear: any) {
     return this.http.post(`${API_URL}/api-view-performance-kpi-dashboard`, { login_access_token: login_token, unit_id: unit_id, dept_id: dept_id, year: selectedYear, fyear: financialYear });
   }
   perforKpiStatusdView(login_token: string, unit_id: string) {

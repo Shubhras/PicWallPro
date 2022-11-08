@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
             const userModulePermission = JSON.parse(localStorage.getItem('userModulePermission'));
             const modulePermissions = JSON.parse(localStorage.getItem('modulePermissions'))
             let stateUrl = state.url.replace('/apps/', "");
-            const publicUrls = ['main-dashboard', 'event-home','picwall-photo', 'prima-navigation', 'finance-operations', 'password', 'profile', 'company-setup'];
+            const publicUrls = ['main-dashboard', 'event-home','picwall-photo', 'password', 'profile', 'company-setup'];
             if(stateUrl == 'project/project-details'){
                 this.config.layout.navbar.folded = true;
             }else{

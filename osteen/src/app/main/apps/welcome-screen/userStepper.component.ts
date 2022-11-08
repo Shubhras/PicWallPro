@@ -1,9 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { MatStepper, MatStep, MatDialog, MatDialogRef } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfigService } from '@fuse/services/config.service';
-import { AddStrategicDialog } from 'app/main/apps/strategic-obj/strategic/addstrategic.component';
-import { AddInitiativeDialog } from 'app/main/apps/strategic-obj/initiative-add/addinitiative.component';
-import { AddActionPlanDialog } from 'app/main/apps/strategic-obj/action-plan-add/addactionplan.component';
 import { AddUserDialog } from 'app/main/apps/module-roles/users-list/add-user.component';
 import { AddDepartmentDialog } from '../module-roles/department-change/adddepartment.component';
 import { AddSectionDialog } from '../module-roles/section-change/addsection.component';
@@ -191,151 +188,10 @@ export class StepperOverviewExample implements OnInit {
         else {
             alert('You don`t have permission');
         }
-    }
-
-    AddStrategicPopupOpen(): void {
-        if (this.strObjPermission.acc_create == 1) {
-            const dialogRef = this.dialog.open(AddStrategicDialog, { disableClose: true });
-            this._fuseConfigService.config = {
-                layout: {
-                    navbar: {
-                        hidden: true
-                    },
-                    sidepanel: {
-                        hidden: true
-                    }
-                }
-            };
-            this.dialogRefstepper.close();
-            dialogRef.afterClosed().subscribe(result => {
-                this._fuseConfigService.config = {
-                    layout: {
-                        navbar: {
-                            hidden: false
-                        },
-                    }
-                };
-                if (result == 'YesSubmit') {
-                    this.router.navigate([this.currentUrl]);
-                }
-            });
-        }
-        else {
-            alert('You don`t have permission');
-        }
-    }
-
-    addInitiativeOpen(): void {
-        if (this.initiativesPermission.acc_create == 1) {
-            const dialogRef = this.dialog.open(AddInitiativeDialog, {
-            });
-            this._fuseConfigService.config = {
-                layout: {
-                    navbar: {
-                        hidden: true
-                    },
-                    sidepanel: {
-                        hidden: true
-                    }
-                }
-            };
-            this.dialogRefstepper.close();
-            dialogRef.afterClosed().subscribe(result => {
-                this._fuseConfigService.config = {
-                    layout: {
-                        navbar: {
-                            hidden: false
-                        },
-                    }
-                };
-                if (result == 'YesSubmit') {
-                    this.router.navigate([this.currentUrl]);
-                }
-            });
-        }
-        else {
-            alert('You don`t have permission');
-        }
-    }
-
-    addActionPlanOpen(): void {
-        if (this.actionPlanPermission.acc_create == 1) {
-            const dialogRef = this.dialog.open(AddActionPlanDialog);
-            this._fuseConfigService.config = {
-                layout: {
-                    navbar: {
-                        hidden: true
-                    },
-                    sidepanel: {
-                        hidden: true
-                    }
-                }
-            };
-            this.dialogRefstepper.close();
-            dialogRef.afterClosed().subscribe(result => {
-                this._fuseConfigService.config = {
-                    layout: {
-                        navbar: {
-                            hidden: false
-                        },
-                    }
-                };
-                if (result == 'YesSubmit') {
-                    this.router.navigate([this.currentUrl]);
-                }
-            });
-        }
-        else {
-            alert('You don`t have permission');
-        }
-    }
-
-    // test(value) {
-    //     value = this.isEditable2 = true;
-    //     console.log('hh', value);
-
-    // }
-
-
-
-
-
-    // selected: any;
-
-    // flip() {
-    //     this.isDisabled = false;
-    // }
-    // flipo() {
-    //     this.isDisabledo = false;
-    // }
-    // flipt() {
-    //     this.isDisabledt = false;
-    // }
-    // flipf() {
-    //     this.isDisabledf = false;
-    // }
-    // myClick() {
-    //     alert("was clicked");
-    // }
-
-
-
-    // rotate(event) {
-    //     event.srcElement.classList.remove("locked");
-    // setTimeout(() => {
-    //     event.srcElement.classList.add("list_btn_two");
-    // }, 0)
-    //this.isDisabled = false;
-    //}
-    // @ViewChild('stepper') stepper: MatStepper;
-
-    // nextClicked(event) {
-    //     // complete the current step
-    //     event.srcElement.classList.remove("lock");
-    //     this.stepper.selected.completed = true;
-    //     // move to next step
-    //     this.stepper.next();
-    // }
+    }   
+    AddStrategicPopupOpen():void{}
+    addInitiativeOpen():void{}
+    addActionPlanOpen():void{}
 }
 export interface PeriodicElement {
     sr_no: number;
@@ -346,7 +202,6 @@ export interface PeriodicElement {
     city: string;
     address: string;
     multi_unit_ids: string;
-    //role_name: string;
     multi_dept_ids: string;
     multi_section_ids: string;
     action: string;

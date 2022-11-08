@@ -130,9 +130,6 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::get(config('laraadmin.adminRoute') . '/function_module_dt_ajax', 'LA\Function_ModulesController@dtajax');
 
 
-	/* ================== Add_kpis ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/add_kpis', 'LA\Add_kpisController');
-	Route::get(config('laraadmin.adminRoute') . '/add_kpi_dt_ajax', 'LA\Add_kpisController@dtajax');
 
 	/* ================== Strategic_objectives ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/strategic_objectives', 'LA\Strategic_objectivesController');
@@ -171,13 +168,7 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/business_plans', 'LA\Business_plansController');
 	Route::get(config('laraadmin.adminRoute') . '/business_plan_dt_ajax', 'LA\Business_plansController@dtajax');
 
-	/* ================== Kpi_targets ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_targets', 'LA\Kpi_targetsController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_target_dt_ajax', 'LA\Kpi_targetsController@dtajax');
 
-	/* ================== Kpi_actuals ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_actuals', 'LA\Kpi_actualsController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_actual_dt_ajax', 'LA\Kpi_actualsController@dtajax');
 
 	/* ================== Initiatives ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/initiatives', 'LA\InitiativesController');
@@ -203,13 +194,7 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/initiative_datas', 'LA\Initiative_datasController');
 	Route::get(config('laraadmin.adminRoute') . '/initiative_data_dt_ajax', 'LA\Initiative_datasController@dtajax');
 
-	/* ================== Kpi_dashes ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_dashes', 'LA\Kpi_dashesController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_dash_dt_ajax', 'LA\Kpi_dashesController@dtajax');
 
-	/* ================== Kpi_datas ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_datas', 'LA\Kpi_datasController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_data_dt_ajax', 'LA\Kpi_datasController@dtajax');
 
 	/* ================== Task_dashes ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/task_dashes', 'LA\Task_dashesController');
@@ -223,9 +208,6 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/task_trackers', 'LA\Task_trackersController');
 	Route::get(config('laraadmin.adminRoute') . '/task_tracker_dt_ajax', 'LA\Task_trackersController@dtajax');
 
-	/* ================== Kpi_trackers ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_trackers', 'LA\Kpi_trackersController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_tracker_dt_ajax', 'LA\Kpi_trackersController@dtajax');
 
 	/* ================== Str_obj_statuses ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/str_obj_statuses', 'LA\Str_obj_statusesController');
@@ -268,9 +250,6 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/faqs', 'LA\FaqsController');
 	Route::get(config('laraadmin.adminRoute') . '/faq_dt_ajax', 'LA\FaqsController@dtajax');
 
-	/* ================== Lead_kpis ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/lead_kpis', 'LA\Lead_kpisController');
-	Route::get(config('laraadmin.adminRoute') . '/lead_kpi_dt_ajax', 'LA\Lead_kpisController@dtajax');
 
 	/* ================== Business_priorities ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/business_priorities', 'LA\Business_prioritiesController');
@@ -284,21 +263,9 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/business_objectives', 'LA\Business_objectivesController');
 	Route::get(config('laraadmin.adminRoute') . '/business_objective_dt_ajax', 'LA\Business_objectivesController@dtajax');
 
-	/* ================== Strengths ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/strengths', 'LA\StrengthsController');
-	Route::get(config('laraadmin.adminRoute') . '/strength_dt_ajax', 'LA\StrengthsController@dtajax');
 
-	/* ================== Weaknesses ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/weaknesses', 'LA\WeaknessesController');
-	Route::get(config('laraadmin.adminRoute') . '/weakness_dt_ajax', 'LA\WeaknessesController@dtajax');
 
-	/* ================== Opportunities ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/opportunities', 'LA\OpportunitiesController');
-	Route::get(config('laraadmin.adminRoute') . '/opportunity_dt_ajax', 'LA\OpportunitiesController@dtajax');
 
-	/* ================== Threats ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/threats', 'LA\ThreatsController');
-	Route::get(config('laraadmin.adminRoute') . '/threat_dt_ajax', 'LA\ThreatsController@dtajax');
 
 	/* ================== Reflection_past_years ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/reflection_past_years', 'LA\Reflection_past_yearsController');
@@ -336,9 +303,6 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/settings', 'LA\SettingsController');
 	Route::get(config('laraadmin.adminRoute') . '/setting_dt_ajax', 'LA\SettingsController@dtajax');
 
-	/* ================== Kpi_performance_dashes ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_performance_dashes', 'LA\Kpi_performance_dashesController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_performance_dash_dt_ajax', 'LA\Kpi_performance_dashesController@dtajax');
 
 	/* ================== Status_strategic_objs ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/status_strategic_objs', 'LA\Status_strategic_objsController');
@@ -489,13 +453,7 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/project_sub_actvities', 'LA\Project_sub_actvitiesController');
 	Route::get(config('laraadmin.adminRoute') . '/project_sub_actvity_dt_ajax', 'LA\Project_sub_actvitiesController@dtajax');
 
-	/* ================== Project_kpis ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/project_kpis', 'LA\Project_kpisController');
-	Route::get(config('laraadmin.adminRoute') . '/project_kpi_dt_ajax', 'LA\Project_kpisController@dtajax');
 
-	/* ================== Project_kpi_milestons ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/project_kpi_milestons', 'LA\Project_kpi_milestonsController');
-	Route::get(config('laraadmin.adminRoute') . '/project_kpi_mileston_dt_ajax', 'LA\Project_kpi_milestonsController@dtajax');
 
 	/* ================== Project_governances ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/project_governances', 'LA\Project_governancesController');
@@ -572,13 +530,7 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/dashboard_and_reports', 'LA\Dashboard_and_reportsController');
 	Route::get(config('laraadmin.adminRoute') . '/dashboard_and_report_dt_ajax', 'LA\Dashboard_and_reportsController@dtajax');
 
-	/* ================== Kpi_actual_rview_logs ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_actual_rview_logs', 'LA\Kpi_actual_rview_logsController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_actual_rview_log_dt_ajax', 'LA\Kpi_actual_rview_logsController@dtajax');
 
-	/* ================== Kpi_actual_rview_logs ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_actual_rview_logs', 'LA\Kpi_actual_rview_logsController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_actual_rview_log_dt_ajax', 'LA\Kpi_actual_rview_logsController@dtajax');
 
 	/* ================== Management_reports ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/management_reports', 'LA\Management_reportsController');
@@ -592,9 +544,6 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/objectives_steps', 'LA\Objectives_StepsController');
 	Route::get(config('laraadmin.adminRoute') . '/objectives_step_dt_ajax', 'LA\Objectives_StepsController@dtajax');
 
-	/* ================== Kpi_actual_latentries ================== */
-	Route::resource(config('laraadmin.adminRoute') . '/kpi_actual_latentries', 'LA\Kpi_actual_latentriesController');
-	Route::get(config('laraadmin.adminRoute') . '/kpi_actual_latentry_dt_ajax', 'LA\Kpi_actual_latentriesController@dtajax');
 
 	/* ================== Strategic_sno_cmpnies ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/strategic_sno_cmpnies', 'LA\Strategic_sno_cmpniesController');
@@ -624,4 +573,12 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	/* ================== Post_comments ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/post_comments', 'LA\Post_commentsController');
 	Route::get(config('laraadmin.adminRoute') . '/post_comment_dt_ajax', 'LA\Post_commentsController@dtajax');
+
+	/* ================== Students ================== */
+	Route::resource(config('laraadmin.adminRoute') . '/students', 'LA\StudentsController');
+	Route::get(config('laraadmin.adminRoute') . '/student_dt_ajax', 'LA\StudentsController@dtajax');
+
+	/* ================== Student_profiles ================== */
+	Route::resource(config('laraadmin.adminRoute') . '/student_profiles', 'LA\Student_profilesController');
+	Route::get(config('laraadmin.adminRoute') . '/student_profile_dt_ajax', 'LA\Student_profilesController@dtajax');
 });

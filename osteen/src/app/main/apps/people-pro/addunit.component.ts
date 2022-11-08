@@ -8,6 +8,7 @@ import { AlertService, UserService } from 'app/main/apps/_services';
 @Component({
     selector: 'add-unit-dialog',
     templateUrl: 'addunit.component.html',
+    styleUrls: ['./people-pro.component.scss'],
 })
 export class AddUnitDialog {
     direction = 'row';
@@ -15,9 +16,13 @@ export class AddUnitDialog {
     user_id: number;
     AddUnitForm: FormGroup;
     submitted = false;
+    grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
     // Private
     private _unsubscribeAll: Subject<any>;
     myObjArray: any;
+    allDetailsCompany: any;
+    company_id: any;
+    unit_id: any;
     constructor(
         public dialogRef: MatDialogRef<AddUnitDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -34,19 +39,20 @@ export class AddUnitDialog {
     }
     ngOnInit(): void {
         console.log('add', this.data);
-
-        // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        // this.user_id = this.currentUser.data.id;
-        // let login_access_token = this.currentUser.login_access_token;
-        // let company_id = this.currentUser.data.company_id;
+           
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.company_id = this.currentUser.data.company_id;
+        this.unit_id = JSON.parse(localStorage.getItem('currentUnitId'));
+        console.log('unit', this.unit_id);
+        console.log('company', this.company_id);
+        
         this.AddUnitForm = this._formBuilder.group({
-            // login_access_token: [login_access_token, Validators.required],
-            // user_id: [this.user_id, ],
             name: ['', Validators.required],
-            grad_year: ['', Validators.required],
-            activites: ['', Validators.required],
+            grade_year: ['', Validators.required],
+            activities: ['', Validators.required],
             qoute: ['',],
-            // image_url: ['',],
+            unit_id: [this.unit_id, Validators.required],
+            company_id: [this.company_id, Validators.required],
         });
     }
     AddUnitSubmit() {
@@ -56,7 +62,7 @@ export class AddUnitDialog {
         }
 
         console.log('11111111111111111111', this.AddUnitForm);
-        // localStorage.setItem('peopleData', JSON.stringify(this.AddUnitForm.value));
+     
         this.dialogRef.close(this.AddUnitForm.value);
 
         //     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));

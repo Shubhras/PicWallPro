@@ -31,6 +31,7 @@ export class EditUnitDialog {
     userPicture: any;
     user_id: any;
     company_id: any;
+    grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
     // Private
     // private _unsubscribeAll: Subject<any>;
     constructor(
@@ -53,7 +54,7 @@ export class EditUnitDialog {
     }
     ngOnInit(): void {
         this.EditDataGet = this.data;
-        console.log('edit data', this.data);
+        console.log('edit data',   this.EditDataGet);
         this.userPicture = this.EditDataGet.profile;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.user_id = this.currentUser.data.id;
@@ -68,12 +69,14 @@ export class EditUnitDialog {
             id: [this.EditDataGet.id, Validators.required],
             // profile: ['',],
             name: [this.EditDataGet.name, Validators.required],
-            grad_year: [this.EditDataGet.grad_year, Validators.required],
-            activites: [this.EditDataGet.activites, Validators.required],
-            qoute: [this.EditDataGet.qoute,],
-            // image_url: [ this.EditDataGet.image_url,],
+            grade_year: [this.EditDataGet.grade_year, Validators.required],
+            activities: [this.EditDataGet.activities, Validators.required],
+            qoute: [this.EditDataGet.qoute],
+            unit_id: [this.EditDataGet.unit_id, Validators.required],
+            company_id: [this.EditDataGet.company_id, Validators.required],
         });
-       
+        // this.EditUnitForm.patchValue['']
+        // this.EditUnitForm.patchValue({ grade_year:  this.EditDataGet.grade_year});
     }
 
     onFileSelected(event) {
@@ -92,9 +95,9 @@ export class EditUnitDialog {
             const fd = new FormData();
             fd.append('photo', this.selectedFile, this.selectedFile.name);
             fd.append('login_access_token', this.currentUser.login_access_token);
-            fd.append('user_id', this.EditUnitForm.value.id);
-
-            this.userService.userPictureUpload(fd).pipe(first()).subscribe(
+            fd.append('student_id', this.EditUnitForm.value.id);
+            this.EditUnitForm.value['fd'] = fd;
+            this.userService.studentPictureUpload(fd).pipe(first()).subscribe(
                 (data: any) => {
                     if (data.status_code == 200) {
                         this.alertService.success(data.message, true);
@@ -135,7 +138,7 @@ export class EditUnitDialog {
             console.log('Invalid form', this.EditUnitForm.value);
             return;
         }
-        this.EditUnitForm.value['profile'] = this.userPicture;
+        // this.EditUnitForm.value['profile'] = this.userPicture;
         console.log('form data', this.EditUnitForm.value);
         // localStorage.setItem('peopleData', JSON.stringify(this.AddUnitForm.value));
         this.dialogRef.close(this.EditUnitForm.value);

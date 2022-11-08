@@ -106,6 +106,7 @@ class ApiProfileController extends ResponseApiController
 
     public function api_update_profile_picture(Request $request)
     {
+        // echo "<pre>"; dump($request->all()); die;
         try {
             if ($request->File('photo')->isValid()) {
 

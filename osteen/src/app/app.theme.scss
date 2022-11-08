@@ -78,57 +78,30 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Import app and page component themes here to enable theming for them
-@import "src/app/layout/components/chat-panel/chat-panel.theme";
 @import "src/app/layout/components/toolbar/toolbar.theme";
-
-//@import "src/app/main/apps/academy/academy.theme";
-@import "src/app/main/apps/calendar/calendar.theme";
-@import "src/app/main/apps/chat/chat.theme";
 @import "src/app/main/apps/contacts/contacts.theme";
 @import "src/app/main/apps/dashboards/project/project.theme";
-@import "src/app/main/apps/mail/mail.theme";
-@import "src/app/main/apps/mail-ngrx/mail.theme";
-@import "src/app/main/apps/todo/todo.theme";
 @import "src/app/main/apps/login/login.theme";
 @import "src/app/main/apps/register/register.theme";
 @import "src/app/main/apps/forgot-password/forgot-password.theme";
-@import "src/app/main/apps/prima-navigation/business-faq/business-faq.theme";
- @import "src/app/main/apps/prima-navigation/knowledge-base/knowledge-base.theme";
 @import "src/app/main/apps/profile/tabs/about/about.theme";
 @import "src/app/main/apps/profile/tabs/photos-videos/photos-videos.theme";
 @import "src/app/main/apps/profile/tabs/timeline/timeline.theme";
 
-//@import "src/app/main/ui/cards/cards.theme";
-
-//@import "src/app/main/angular-material-elements/example-viewer/example-viewer.theme";
-
 // Define a mixin for easier access
 @mixin components-theme($theme) {
     // Layout components
-    @include chat-panel-theme($theme);
     @include toolbar-theme($theme);
     // Apps
-    @include calendar-theme($theme);
-    @include chat-theme($theme);
     @include contacts-theme($theme);
     @include dashboards-project-theme($theme);
-    @include mail-theme($theme);
-    @include mail-ngrx-theme($theme);
-    @include todo-theme($theme);
     @include login-theme($theme);
     @include register-theme($theme);
     @include forgot-password-theme($theme);
-    @include business-faq-theme($theme);
-    @include knowledge-base-theme($theme);
     // Pages
     @include profile-about-theme($theme);
     @include profile-photos-videos-theme($theme);
     @include profile-timeline-theme($theme);
-    // UI
-    //@include ui-cards-theme($theme);
-
-    // Example Viewer
-   // @include example-viewer-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

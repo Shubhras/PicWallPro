@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
+// echo 'i reached in API.php';
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
@@ -43,7 +44,6 @@ Route::group(['middleware' => ['Check_Token_And_Validator']], function () {
     Route::post('/api-update-profile-picture', 'ApiProfileController@api_update_profile_picture');
     Route::post('/api-get-single-user-details', 'ApiProfileController@api_get_single_user_details');
 
-    
     //Api authentication route
     Route::post('/api-user-signup-file', 'ApiAuthController@api_user_signup_file');
     Route::post('/api-change-password', 'ApiAuthController@api_change_password');
@@ -265,6 +265,14 @@ Route::group(['middleware' => ['Check_Token_And_Validator']], function () {
     Route::post('/api-new-company-setup', 'ApiNewCompanySetup@api_new_company_setup');
     Route::post('/api-view-new-company-setup', 'ApiNewCompanySetup@api_view_new_company_setup');
 });
+
+//Api Get Students Route.
+Route::post('/api-get-students', 'ApiStudentsController@api_get_student');
+Route::post('/api-add-students', 'ApiStudentsController@api_add_students');
+Route::post('/api-update-student-profile-picture', 'ApiStudentsController@api_update_student_profile');
+Route::post('/api-update-students', 'ApiStudentsController@api_edit_student');
+Route::post('/api-delete-students', 'ApiStudentsController@api_delete_student');
+
 // Handle multi profile pictures
 // Route::post('/api-update-profiles', 'ApiProfileController@api_update_profiles');
 Route::post('/api-get-profiles', 'ApiProfileController@api_get_profiles');

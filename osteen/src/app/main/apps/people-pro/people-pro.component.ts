@@ -33,7 +33,7 @@ export class PeopleProComponent implements OnInit {
   message: any;
   MessageSuccess: any;
   MessageError: any;
-  displayedColumns: string[] = ['profile', 'name', 'grad_year', 'activites', 'qoute', 'action'];
+  displayedColumns: string[] = ['profile', 'name', 'grade_year', 'activities', 'qoute', 'action'];
   dataSource: any;
 
   // exceldata: AOA = [[1, 2], [3, 4]];
@@ -47,9 +47,10 @@ export class PeopleProComponent implements OnInit {
   id: number;
   peopleData: any;
   // dataSourcepeople: { id: number; name: string; grad_year: string; activites: string; qoute: string; }[];
-  dataSource1: { id: number; profile: string; name: string; grad_year: string; activites: string; qoute: string; }[];
+  // dataSource1: { id: number; profile: string; name: string; grad_year: string; activites: string; qoute: string; }[];
   // convertedJsonData: String;
   excelData: any;
+  login_access_token: any;
   /**
    * Constructor
    *
@@ -68,7 +69,7 @@ export class PeopleProComponent implements OnInit {
   /**
   * On init
   */
-  years = ['2017', '2018', '2019', '2020', '2021', '2022'];
+  grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
   category = ['Class of', 'Staff of', 'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
   staffoflist = ['Leanne Graham', 'Ervin Howell', 'Clementine Bauch'];
   data = [{
@@ -153,12 +154,10 @@ export class PeopleProComponent implements OnInit {
     console.log('jk', this.peopleData);
     // this.toppingList;
     console.log('ii', this.data);
-
-    // this.id = this.data.id;
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.login_access_token = this.currentUser.login_access_token;
     this.unitChangeGet();
   }
-
-
 
   AddPeople(): void {
     const dialogRef = this.dialog.open(AddUnitDialog, {
@@ -178,24 +177,27 @@ export class PeopleProComponent implements OnInit {
       }
     };
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('submitted with', result);
-
       if (result) {
-        const addPeopleObj = {
-          "id": (this.data.length + 1),
+        const addPeopleObj1 = {
           "profile": "assets/images/avatars/profile.jpg",
           "name": result.name,
-          "grad_year": result.grad_year,
-          "activites": result.activites,
+          "grade_year": result.grade_year,
+          "activities": result.activities,
           "qoute": result.qoute,
+          "unit_id": result.unit_id,
+          "company_id": result.company_id
         }
-
-        console.log('addPeopleObj',addPeopleObj);
-        
-        this.data.push(addPeopleObj);
-        console.log(' this.data', this.data);
-
-        this.unitChangeGet();
+        this.userService.addStudents(addPeopleObj1).pipe(first()).subscribe(
+          (data: any) => {
+            console.log('Students data', data);
+            if (data.status_code == 200) {
+              this.alertService.success(data.message, true);
+              this.unitChangeGet();
+            }
+          },
+          error => {
+            this.alertService.error(error);
+          });
       }
       this._fuseConfigService.config = {
         layout: {
@@ -207,9 +209,6 @@ export class PeopleProComponent implements OnInit {
           // },
         }
       };
-      // if (result == "YesSubmit") {
-      //   this.unitChangeGet();
-      // }
     });
   }
 
@@ -223,9 +222,6 @@ export class PeopleProComponent implements OnInit {
         navbar: {
           hidden: true
         },
-        // toolbar: {
-        //   hidden: false
-        // },
         sidepanel: {
           hidden: true
         }
@@ -237,21 +233,31 @@ export class PeopleProComponent implements OnInit {
           navbar: {
             hidden: false
           },
-          // toolbar: {
-          //   hidden: true
-          // },
         }
       };
       if (result) {
-        console.log('edit result',result);
-        
-        const index = this.data.findIndex(item => item.id === result.id);
-        this.data.forEach((element, i) => {
-          if (index == i) {
-            this.data[index] = result;
-            this.unitChangeGet();
-          }
-        });
+        console.log('editresult', result);
+        ///
+        this.userService.updateStudents(result.fd).pipe(first()).subscribe(
+          (data: any) => {
+            // this.dataSource = new MatTableDataSource<PeriodicElement>(this.data);
+            console.log('Students data', data);
+            if (data.status_code == 200) {
+              this.alertService.success(data.message, true);
+              this.unitChangeGet();
+            }
+          },
+          error => {
+            this.alertService.error(error);
+          });
+        ///
+        //   const index = this.data.findIndex(item => item.id === result.id);
+        //   this.data.forEach((element, i) => {
+        //     if (index == i) {
+        //       this.data[index] = result;
+        //       this.unitChangeGet();
+        //     }
+        //   });
       }
     });
   }
@@ -259,30 +265,16 @@ export class PeopleProComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   unitChangeGet() {
-    console.log('in unitChangeGet ', this.data);
-
-    // let login_access_token = this.currentUser.login_access_token;
-    // this.userService.getUnitChange(login_access_token, 1).pipe(first()).subscribe(
-    //   (data: any) => {
-    this.dataSource = new MatTableDataSource<PeriodicElement>(this.data);
-    console.log('in unitChangeGet dataSource', this.dataSource);
-
-    // this.dataSource.push(this.dataSource);
-
-
-    //     this.unitChangeAllData = this.viewUnitChangeData.data;
-    //     this.unitChangeAllData.map((UNIT: any, index: number) => {
-    //       UNIT.sr_no = index + 1;
-    //     });
-    //     const ELEMENT_DATA: PeriodicElement[] = this.unitChangeAllData;
-    //     this.dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-    //     this.dataSource.paginator = this.paginator;
-    //     console.log('llll',this.dataSource);
-
-    //   },
-    //   error => {
-    //     this.alertService.error(error);
-    //   });
+    this.userService.getStudents(this.login_access_token).pipe(first()).subscribe(
+      (data: any) => {
+        console.log('data', data.data);
+        
+        const ELEMENT_DATA: PeriodicElement[] = data.data;
+        this.dataSource = ELEMENT_DATA;
+      },
+      error => {
+        this.alertService.error(error);
+      });
   }
 
   onFileChange(event: any) {
@@ -327,27 +319,22 @@ export class PeopleProComponent implements OnInit {
     confirmResult.afterClosed().subscribe((result) => {
       if (result == true) {
         console.log('yesssss', row);
-        const index = this.data.indexOf(row);
-        this.data.splice(index, 1);
-        this.unitChangeGet();
-        // this.userService.deleteUnitChange(login_access_token, unit_id, user_id).pipe(first()).subscribe(
-        //   data => {
-        //     this.status_code = data;
-        //     if (this.status_code.status_code == 200) {
-        //       this.MessageSuccess = data;
-        //       this.alertService.success(this.MessageSuccess.message, true);
-        //       this.unitChangeGet();
-        //     }
-        //     else {
-        //       this.MessageError = data;
-        //       this.alertService.error(this.MessageError.message, true);
-        //     }
-        //   },
-        //   error => {
-        //     this.alertService.error(error);
-        //   });
-      } else {
-        console.log('NOoooo', row);
+        this.userService.deleteStudent(row).pipe(first()).subscribe(
+          data => {
+            this.status_code = data;
+            if (this.status_code.status_code == 200) {
+              this.MessageSuccess = data;
+              this.alertService.success(this.MessageSuccess.message, true);
+              this.unitChangeGet();
+            }
+            else {
+              this.MessageError = data;
+              this.alertService.error(this.MessageError.message, true);
+            }
+          },
+          error => {
+            this.alertService.error(error);
+          });
       }
     });
   }
@@ -361,7 +348,7 @@ export interface PeriodicElement {
   id: any,
   profile: any,
   name: any,
-  grad_year: any,
-  activites: any,
+  grade_year: any,
+  activities: any,
   qoute: any,
 }
