@@ -18,25 +18,24 @@ class ApiStudentsController extends ResponseApiController
      */
     public function api_get_student(Request $request)
     {
-        $students = DB::table('students')->select('id', 'profile', 'name', 'grade_year', 'activities', 'qoute', 'unit_id', 'company_id')
-            ->where('students.deleted_at', null)
+        $students = DB::table('students')->select('id', 'photo', 'hash', 'name', 'grade_year', 'activities', 'qoute', 'unit_id', 'company_id')
+            ->where('company_id', $request->company_id)
+            ->where('unit_id', $request->unit_id)
+            ->where('deleted_at', null)
             ->get();
 
-        // foreach ($action_plans as $key => $row) {
-        //     $temp[] = $row->action_plan_id;
-        //     $kpi_id_data = DB::table('kpi_actionplan_rels')->select('kpi_actionplan_rels.kpi_id')
-        //         ->where('kpi_actionplan_rels.action_plan_id', $row->action_plan_id)
-        //         ->get();
-
-        //     $kpi_id_length = count($kpi_id_data);
-        //     if ($kpi_id_length > 0) {
-        //         for ($i = 0; $i < $kpi_id_length; $i++) {
-        //             $kpi_id[] = $kpi_id_data[$i]->kpi_id;
-        //         }
-        //         $action_plans[$key]->kpi_data = json_encode($kpi_id);
-        //         unset($kpi_id_length, $i, $kpi_id);
-        //     }
-        // }
+        foreach ($students as $key => $value) {
+            $multi_activities = explode(', ', $value->activities);
+            $students[$key]->activities = $multi_activities;
+            // echo "<pre>";
+            // dump($multi_activities);
+            // $string = "123456stringsawexs";
+            // $hash = str_shuffle($string);
+            $temp = url('/') . '/files/' . $value->hash .'/'. $value->photo;
+            $students[$key]->profile = $temp;
+            // value  url('/') . '/files/' . $file_name->hash . '/' . $file_name->file_name;
+        }
+        // dump($students);die;
 
         $this->apiResponse['status'] = "success";
         $this->apiResponse['message'] = "students list";
@@ -51,7 +50,20 @@ class ApiStudentsController extends ResponseApiController
      */
     public function api_add_students(Request $request)
     {
-        // dump($request); die;
+        // /var/www/html/PicWallPro/osteen/src/assets/images/avatars/Abbott.jpg
+        $request['activities'] = implode(", ", $request->activities);
+        $photo = "profile.jpg";
+        // $destination = $_SERVER["DOCUMENT_ROOT"]."/storage/profile_picture";
+        $destination = $_SERVER["DOCUMENT_ROOT"] . "/storage/profile_picture";
+        $extension = pathinfo($photo, PATHINFO_EXTENSION);
+        $string = "123456stringsawexs";
+        $hash = str_shuffle($string);
+        $path = $destination . '/' . $photo;
+        $request['photo'] = $photo;
+        $request['extension'] = $extension;
+        $request['path'] = $path;
+        $request['hash'] = $hash;
+
         //add students
         try {
             Module::insert("students", $request);
@@ -73,10 +85,10 @@ class ApiStudentsController extends ResponseApiController
      */
     public function api_update_student_profile(Request $request)
     {
-       echo "<pre>"; dump($request->all()); die;
+        // echo "<pre>";
+        // dump($request->all());die;
         try {
             if ($request->File('photo')->isValid()) {
-
                 $name = uniqid() . '.' . $request->photo->getClientOriginalName();
                 $destination = $_SERVER["DOCUMENT_ROOT"] . '/storage/profile_picture';
                 $request->photo->move($destination, $name);
@@ -87,12 +99,17 @@ class ApiStudentsController extends ResponseApiController
                 $public = 1;
                 $hash = str_shuffle($string);
 
-                $request->name = $name;
+                $request->photo = $name;
                 $request->extension = $extension;
                 $request->path = $path;
                 $request->public = $public;
                 $request->hash = $hash;
-                $image_id = Module::insert("student_profiles", $request);
+                $date = date('Y-m-d h:i:s');
+                // $image_id = Module::insert("student_profiles", $request);
+                // if (!empty($image_id)) {
+                DB::table('students')->where('id', $request->id)->update(['updated_at' => $date, 'photo' => $request->photo, 'extension' => $request->extension, 'path' => $request->path, 'hash' => $request->hash, 'public' => $request->public]);
+                // }
+                // $insert_id = Module::updateRow("students", $request, $request->id);
                 // DB::table('employers')->where('user_id', $request->user_id)->update(['photo_id' => $image_id]);
             } else {
                 $this->apiResponse['message'] = "Invalid Image Uploaded";
@@ -112,43 +129,41 @@ class ApiStudentsController extends ResponseApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function api_edit_student(Request $request)
+    public function api_update_student(Request $request)
     {
-        // echo "<pre>"; dump($request->all()); die;
-        try {
-            if ($request()->File('photo')->isValid()) {
-      
+        // echo "<pre>"; dump($request); die;
+        // try {
+        //     if ($request()->File('photo')->isValid()) {
 
-                $name = uniqid() . '.' . $request->photo->getClientOriginalName();
-                $destination = $_SERVER["DOCUMENT_ROOT"] . '/storage/profile_picture';
-                $request->photo->move($destination, $name);
+        //         $name = uniqid() . '.' . $request->photo->getClientOriginalName();
+        //         $destination = $_SERVER["DOCUMENT_ROOT"] . '/storage/profile_picture';
+        //         $request->photo->move($destination, $name);
 
-                $string = "123456stringsawexs";
-                $extension = pathinfo($name, PATHINFO_EXTENSION);
-                $path = $destination . '/' . $name;
-                $public = 1;
-                $hash = str_shuffle($string);
+        //         $string = "123456stringsawexs";
+        //         $extension = pathinfo($name, PATHINFO_EXTENSION);
+        //         $path = $destination . '/' . $name;
+        //         $public = 1;
+        //         $hash = str_shuffle($string);
 
-                $request->name = $name;
-                $request->extension = $extension;
-                $request->path = $path;
-                $request->public = $public;
-                $request->hash = $hash;
-                $image_id = Module::insert("student_profiles", $request);
-                
-                // DB::table('employers')->where('user_id', $request->user_id)->update(['photo_id' => $image_id]);
-            } else {
-                $this->apiResponse['message'] = "Invalid Image Uploaded";
-                return $this->sendResponse();
-            }
-        } catch (Exception $e) {
-            $this->apiResponse['message'] = $e->getMessage();
-            return $this->sendResponse();
-        }
+        //         $request->name = $name;
+        //         $request->extension = $extension;
+        //         $request->path = $path;
+        //         $request->public = $public;
+        //         $request->hash = $hash;
+        //         $image_id = Module::insert("student_profiles", $request);
 
-
-      
-        $insert_id = Module::updateRow("students", $request, $request->id);
+        //         // DB::table('employers')->where('user_id', $request->user_id)->update(['photo_id' => $image_id]);
+        //     } else {
+        //         $this->apiResponse['message'] = "Invalid Image Uploaded";
+        //         return $this->sendResponse();
+        //     }
+        // } catch (Exception $e) {
+        //     $this->apiResponse['message'] = $e->getMessage();
+        //     return $this->sendResponse();
+        // }
+        $request['activities'] = implode(", ", $request->activities);
+        DB::table('students')->where('id', $request->id)->update(['updated_at' => $date, 'name' => $request->name, 'grade_year' => $request->grade_year, 'activities' => $request->activities, 'qoute' => $request->qoute, 'unit_id' => $request->unit_id, 'company_id' => $request->company_id]);
+        // $insert_id = Module::updateRow("students", $request, $request->id);
         $this->apiResponse['status'] = "success";
         $this->apiResponse['message'] = 'Successfully updated record!';
         return $this->sendResponse();

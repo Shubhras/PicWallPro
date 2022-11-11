@@ -17,14 +17,18 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Module::generate("Students", 'students', 'unit_id', 'fa-cube', [
-            ["profile", "profile", "TextField", false, "", 0, 256, false],
+        Module::generate("Students", 'students', 'public', 'fa-cube', [
+            ["path", "Path", "String", false, "", 0, 256, false],
             ["name", "name", "TextField", false, "", 0, 256, false],
             ["grade_year", "grade_year", "Integer", false, "", 0, 11, false],
             ["activities", "activities", "TextField", false, "", 0, 256, false],
             ["qoute", "qoute", "Textarea", false, "", 0, 0, false],
             ["company_id", "company_id", "Integer", false, "", 0, 11, true],
             ["unit_id", "unit_id", "Integer", false, "", 0, 11, true],
+            ["photo", "Photo", "Name", false, "", 0, 250, true],
+            ["extension", "Extension", "String", false, "", 0, 20, false],
+            ["hash", "Hash", "String", false, "", 0, 250, false],
+            ["public", "Is Public", "Checkbox", false, "", 0, 0, false],
         ]);
 		
 		/*

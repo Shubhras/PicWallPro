@@ -270,11 +270,11 @@ Route::group(['middleware' => ['Check_Token_And_Validator']], function () {
 Route::post('/api-get-students', 'ApiStudentsController@api_get_student');
 Route::post('/api-add-students', 'ApiStudentsController@api_add_students');
 Route::post('/api-update-student-profile-picture', 'ApiStudentsController@api_update_student_profile');
-Route::post('/api-update-students', 'ApiStudentsController@api_edit_student');
+Route::post('/api-update-students', 'ApiStudentsController@api_update_student');
 Route::post('/api-delete-students', 'ApiStudentsController@api_delete_student');
 
 // Handle multi profile pictures
-// Route::post('/api-update-profiles', 'ApiProfileController@api_update_profiles');
+Route::post('/api-update-profiles', 'ApiProfileController@api_update_profiles');
 Route::post('/api-get-profiles', 'ApiProfileController@api_get_profiles');
 
 // Handle Groups for user profile

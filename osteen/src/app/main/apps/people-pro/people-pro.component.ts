@@ -1,18 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, Inject, OnDestroy } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/utils';
-import { UnitChangeService } from 'app/main/apps/people-pro/unit-change.service';
 import { AddUnitDialog } from 'app/main/apps/people-pro/addunit.component';
 import { EditUnitDialog } from 'app/main/apps/people-pro/editunit.component';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, UserService } from 'app/main/apps/_services';
 import { ConfirmationDialogService } from 'app/main/apps/confirmation-dialog/confirmation-dialog.service';
 import { FuseConfigService } from '@fuse/services/config.service';
 import * as XLSX from 'xlsx';
-import { Action } from 'rxjs/internal/scheduler/Action';
-
+import { FormControl } from '@angular/forms';
 type AOA = any[][];
 @Component({
   selector: 'app-people-pro',
@@ -35,7 +31,7 @@ export class PeopleProComponent implements OnInit {
   MessageError: any;
   displayedColumns: string[] = ['profile', 'name', 'grade_year', 'activities', 'qoute', 'action'];
   dataSource: any;
-
+  studentData: any =[];
   // exceldata: AOA = [[1, 2], [3, 4]];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
@@ -51,13 +47,13 @@ export class PeopleProComponent implements OnInit {
   // convertedJsonData: String;
   excelData: any;
   login_access_token: any;
+  unit_id: any;
   /**
    * Constructor
    *
    * @param {ActionPlanService} _initiativeService
    */
   constructor(
-    private _unitChangeService: UnitChangeService,
     public dialog: MatDialog,
     private userService: UserService,
     private alertService: AlertService,
@@ -72,91 +68,19 @@ export class PeopleProComponent implements OnInit {
   grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
   category = ['Class of', 'Staff of', 'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
   staffoflist = ['Leanne Graham', 'Ervin Howell', 'Clementine Bauch'];
-  data = [{
-    "id": 766,
-    "profile": "assets/images/avatars/profile.jpg",
-    "name": "Leanne Graham",
-    "grad_year": "2022",
-    "activites": "BasketBall",
-    "qoute": "Bret",
-  },
-  {
-    "id": 767,
-    "profile": "assets/images/avatars/profile.jpg",
-    "name": "Ervin Howell",
-    "grad_year": "2022",
-    "activites": "BasketBall",
-    "qoute": "Bret",
-  },
-  {
-    "id": 768,
-    "profile": "assets/images/avatars/profile.jpg",
-    "name": "Clementine Bauch",
-    "grad_year": "2022",
-    "activites": "BasketBall",
-    "qoute": "Bret",
-  },
-    //   {
-    //     "id": 4,
-    //     "name": "Patricia Lebsack",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   },
-    //   {
-    //     "id": 5,
-    //     "name": "Chelsey Dietrich",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   },
-    //   {
-    //     "id": 6,
-    //     "name": "Mrs. Dennis Schulist",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   },
-    //   {
-    //     "id": 7,
-    //     "name": "Kurtis Weissnat",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   },
-    //   {
-    //     "id": 8,
-    //     "name": "Nicholas Runolfsdottir V",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   },
-    //   {
-    //     "id": 9,
-    //     "name": "Glenna Reichert",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   },
-    //   {
-    //     "id": 10,
-    //     "name": "Clementina DuBuque",
-    //     "grad_year": "2022",
-    //     "activites": "BasketBall",
-    //     "qoute": "Bret"
-    //   }
-  ]
+  
   ngOnInit(): void {
     //this.dataSource.sort = this.sort;
     this.peopleData = JSON.parse(localStorage.getItem('allEntries'));
-    this.data;
+
     // this.data.push(this.peopleData);
     console.log('jk', this.peopleData);
     // this.toppingList;
-    console.log('ii', this.data);
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.login_access_token = this.currentUser.login_access_token;
-    this.unitChangeGet();
+    this.company_id = this.currentUser.data.company_id;
+    this.unit_id = JSON.parse(localStorage.getItem('currentUnitId'));
+    this.getStudents();
   }
 
   AddPeople(): void {
@@ -168,9 +92,6 @@ export class PeopleProComponent implements OnInit {
         navbar: {
           hidden: true
         },
-        // toolbar: {
-        //   hidden: false
-        // },
         sidepanel: {
           hidden: true
         }
@@ -179,7 +100,6 @@ export class PeopleProComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         const addPeopleObj1 = {
-          "profile": "assets/images/avatars/profile.jpg",
           "name": result.name,
           "grade_year": result.grade_year,
           "activities": result.activities,
@@ -192,7 +112,7 @@ export class PeopleProComponent implements OnInit {
             console.log('Students data', data);
             if (data.status_code == 200) {
               this.alertService.success(data.message, true);
-              this.unitChangeGet();
+              this.getStudents();
             }
           },
           error => {
@@ -204,9 +124,6 @@ export class PeopleProComponent implements OnInit {
           navbar: {
             hidden: false
           },
-          // toolbar: {
-          //   hidden: true
-          // },
         }
       };
     });
@@ -238,13 +155,13 @@ export class PeopleProComponent implements OnInit {
       if (result) {
         console.log('editresult', result);
         ///
-        this.userService.updateStudents(result.fd).pipe(first()).subscribe(
+        this.userService.updateStudents(result).pipe(first()).subscribe(
           (data: any) => {
             // this.dataSource = new MatTableDataSource<PeriodicElement>(this.data);
             console.log('Students data', data);
             if (data.status_code == 200) {
               this.alertService.success(data.message, true);
-              this.unitChangeGet();
+              this.getStudents();
             }
           },
           error => {
@@ -255,21 +172,59 @@ export class PeopleProComponent implements OnInit {
         //   this.data.forEach((element, i) => {
         //     if (index == i) {
         //       this.data[index] = result;
-        //       this.unitChangeGet();
+        //       this.getStudents();
         //     }
         //   });
       }
     });
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+ 
+  gradeYearFilter(grade_year: any) {
+    if (grade_year) {
+      console.log('this.studentDataff', grade_year);
+      const t = this.studentData;
+      const ELEMENT_GRADE: PeriodicElement[] = t.filter(object => object.grade_year == grade_year);
+      // this.dataSource.filter = grade_year;
+      this.dataSource = ELEMENT_GRADE;
+    } else {
+      this.getStudents();
+    }
   }
-  unitChangeGet() {
-    this.userService.getStudents(this.login_access_token).pipe(first()).subscribe(
+  // categoryYearFilter(grade_year: any) {
+  //   if (grade_year) {
+  //     console.log('cat', grade_year);
+  //     let temp_data = this.studentData;
+  //     temp_data.forEach((row,index )=> {
+  //       let temp = row.activities.filter(object => object == grade_year);
+  //       row.activities = temp;
+  //       temp_data[index] = row;
+  //     });
+  //     const ELEMENT_DATA: PeriodicElement[] = temp_data;
+  //     this.dataSource = ELEMENT_DATA;
+      
+  //   } else {
+  //     this.getStudents();
+  //   }
+  // }
+
+  categoryYearFilter(event: any) {
+    console.log('input',event);
+    // console.log('categoryYearFilter', this.studentData);
+    // const filterValue = (event.target as HTMLInputElement).value;
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getStudents() {
+    this.userService.getStudents(this.login_access_token, this.unit_id, this.company_id).pipe(first()).subscribe(
       (data: any) => {
-        console.log('data', data.data);
-        
-        const ELEMENT_DATA: PeriodicElement[] = data.data;
+
+        // data.data.forEach(element => {
+        //   element.profile = "../../assets/images/avatars/"+element.profile;
+        //   console.log('data', data.data);
+        // });
+        this.studentData = data.data;
+        console.log('data', this.studentData);
+        const ELEMENT_DATA: PeriodicElement[] = this.studentData;
         this.dataSource = ELEMENT_DATA;
       },
       error => {
@@ -292,18 +247,18 @@ export class PeopleProComponent implements OnInit {
         this.excelData = data1;
         this.excelData.forEach(element => {
           let temp = {
-            "id": (this.data.length + 1),
+            "id": (this.studentData.length + 1),
             "profile": "assets/images/avatars/profile.jpg",
             "name": element.name,
             "grad_year": element.grad_year,
             "activites": element.activites,
             "qoute": element.qoute,
           }
-          this.data.push(temp);
+          this.studentData.push(temp);
         });
-        this.unitChangeGet();
-        this.dataSource = this.data;
-        console.log('in on change', this.data);
+        this.getStudents();
+        this.dataSource = this.studentData;
+        console.log('in on change', this.studentData);
 
         // this.convertedJsonData = JSON.stringify(data, undefined, 4);
       });
@@ -325,7 +280,7 @@ export class PeopleProComponent implements OnInit {
             if (this.status_code.status_code == 200) {
               this.MessageSuccess = data;
               this.alertService.success(this.MessageSuccess.message, true);
-              this.unitChangeGet();
+              this.getStudents();
             }
             else {
               this.MessageError = data;

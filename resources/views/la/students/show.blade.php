@@ -107,13 +107,17 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'profile')
+						@la_display($module, 'path')
 						@la_display($module, 'name')
 						@la_display($module, 'grade_year')
 						@la_display($module, 'activities')
 						@la_display($module, 'qoute')
 						@la_display($module, 'company_id')
 						@la_display($module, 'unit_id')
+						@la_display($module, 'photo')
+						@la_display($module, 'extension')
+						@la_display($module, 'hash')
+						@la_display($module, 'public')
 					</div>
 				</div>
 			</div>

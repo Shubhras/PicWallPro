@@ -16,6 +16,7 @@ export class AddUnitDialog {
     user_id: number;
     AddUnitForm: FormGroup;
     submitted = false;
+    category = ['Class of', 'Staff of', 'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
     grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -39,13 +40,13 @@ export class AddUnitDialog {
     }
     ngOnInit(): void {
         console.log('add', this.data);
-           
+
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.company_id = this.currentUser.data.company_id;
         this.unit_id = JSON.parse(localStorage.getItem('currentUnitId'));
         console.log('unit', this.unit_id);
         console.log('company', this.company_id);
-        
+
         this.AddUnitForm = this._formBuilder.group({
             name: ['', Validators.required],
             grade_year: ['', Validators.required],
@@ -56,13 +57,13 @@ export class AddUnitDialog {
         });
     }
     AddUnitSubmit() {
-        if(this.AddUnitForm.invalid){
+        if (this.AddUnitForm.invalid) {
             console.log('Invalid form', this.AddUnitForm.value);
             return;
         }
 
         console.log('11111111111111111111', this.AddUnitForm);
-     
+
         this.dialogRef.close(this.AddUnitForm.value);
 
         //     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));

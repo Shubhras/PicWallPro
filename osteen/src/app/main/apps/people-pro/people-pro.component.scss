@@ -69,9 +69,10 @@
     padding-top: 10px;
 }
 
-.test{
+.test {
     width: unset;
 }
+
 // responsive end
 // .filter {
 //     margin-top: 10px;
@@ -134,14 +135,14 @@ input[type="file"] {
 
 .hy-profile-image {
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width        : 60px;
+    height       : 60px;
     padding      : 4px;
 }
 
-// .upload-record {
-//     margin-top      : 15px;
-//     background-color: #2372bb;
-//     color           : #ffff;
-//     height          : 42px;
-// }
+.test.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(-249%);
+}
+.overflow.mat-select {
+    overflow: hidden;
+}

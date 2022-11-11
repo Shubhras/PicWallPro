@@ -22,8 +22,8 @@ use App\Models\Student;
 class StudentsController extends Controller
 {
 	public $show_action = true;
-	public $view_col = 'unit_id';
-	public $listing_cols = ['id', 'profile', 'name', 'grade_year', 'activities', 'qoute', 'company_id', 'unit_id'];
+	public $view_col = 'public';
+	public $listing_cols = ['id', 'path', 'name', 'grade_year', 'activities', 'qoute', 'company_id', 'unit_id', 'photo', 'extension', 'hash', 'public'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns

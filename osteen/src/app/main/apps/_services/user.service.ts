@@ -60,8 +60,8 @@ export class UserService {
   }
 
   // students
-  getStudents(login_token: string) {
-    return this.http.post(`${API_URL}/api-get-students`, login_token);
+  getStudents(login_token: string, unitId: string, companyId: string ) {
+    return this.http.post(`${API_URL}/api-get-students`, {login_token: login_token, unit_id: unitId, company_id: companyId});
   }
 
   addStudents(data: any) {
@@ -113,9 +113,9 @@ export class UserService {
   singleUserDetails(login_token: string, company_id: any, user_id: number) {
     return this.http.post(`${API_URL}/api-get-single-user-details`, { login_access_token: login_token, company_id: company_id, user_id: user_id });
   }
-  // updateProfiles(data: FormData) {
-  //   return this.http.post(`${API_URL}/api-update-profiles`, data);
-  // }
+  updateProfiles(data: FormData) {
+    return this.http.post(`${API_URL}/api-update-profiles`, data);
+  }
 
   multiProfiles(login_token: string, company_id: any, user_id: number) {
     return this.http.post(`${API_URL}/api-get-profiles`, { login_access_token: login_token, company_id: company_id, user_id: user_id });

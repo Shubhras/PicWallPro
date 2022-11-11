@@ -33,13 +33,17 @@
 					@la_form($module)
 					
 					{{--
-					@la_input($module, 'profile')
+					@la_input($module, 'path')
 					@la_input($module, 'name')
 					@la_input($module, 'grade_year')
 					@la_input($module, 'activities')
 					@la_input($module, 'qoute')
 					@la_input($module, 'company_id')
 					@la_input($module, 'unit_id')
+					@la_input($module, 'photo')
+					@la_input($module, 'extension')
+					@la_input($module, 'hash')
+					@la_input($module, 'public')
 					--}}
                     <br>
 					<div class="form-group">

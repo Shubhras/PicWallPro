@@ -1,21 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, Inject, OnDestroy } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DataSource } from '@angular/cdk/collections';
-import { BehaviorSubject, fromEvent, merge, Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/utils';
-import { UnitChangeService } from 'app/main/apps/module-roles/unit-change/unit-change.service';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService, AuthenticationService, UserService } from 'app/main/apps/_services';
+import { AlertService, UserService } from 'app/main/apps/_services';
 import { User } from '../_models';
 import { HttpClient } from '@angular/common/http';
-import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
     selector: 'edit-unit-dialog',
     templateUrl: 'editunit.component.html',
+    styleUrls: ['./people-pro.component.scss'],
 })
 export class EditUnitDialog {
     direction = 'row';
@@ -31,9 +25,9 @@ export class EditUnitDialog {
     userPicture: any;
     user_id: any;
     company_id: any;
+    category = ['Class of', 'Staff of', 'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
     grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
-    // Private
-    // private _unsubscribeAll: Subject<any>;
+
     constructor(
         public dialogRef: MatDialogRef<EditUnitDialog>,
         @Inject(MAT_DIALOG_DATA) public data: User,
@@ -41,13 +35,7 @@ export class EditUnitDialog {
         private _formBuilder: FormBuilder,
         private userService: UserService,
         private alertService: AlertService,
-        // private authenticationService: AuthenticationService,
-        // private userService: UserService,
-        // private alertService: AlertService
-    ) {
-        // Set the private defaults
-        // this._unsubscribeAll = new Subject();
-    }
+    ) {}
 
     EditUnitPopupClose(): void {
         this.dialogRef.close();
@@ -59,15 +47,10 @@ export class EditUnitDialog {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.user_id = this.currentUser.data.id;
         this.company_id = this.currentUser.data.company_id;
-        // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        // let login_access_token = this.currentUser.login_access_token;
-        // let company_id = this.currentUser.data.company_id;
+
         // Reactive Form
         this.EditUnitForm = this._formBuilder.group({
-            // login_access_token: [login_access_token, Validators.required],
-            // unit_name: [this.EditDataGet.unit_name, Validators.required],
             id: [this.EditDataGet.id, Validators.required],
-            // profile: ['',],
             name: [this.EditDataGet.name, Validators.required],
             grade_year: [this.EditDataGet.grade_year, Validators.required],
             activities: [this.EditDataGet.activities, Validators.required],
@@ -75,8 +58,6 @@ export class EditUnitDialog {
             unit_id: [this.EditDataGet.unit_id, Validators.required],
             company_id: [this.EditDataGet.company_id, Validators.required],
         });
-        // this.EditUnitForm.patchValue['']
-        // this.EditUnitForm.patchValue({ grade_year:  this.EditDataGet.grade_year});
     }
 
     onFileSelected(event) {
@@ -95,8 +76,10 @@ export class EditUnitDialog {
             const fd = new FormData();
             fd.append('photo', this.selectedFile, this.selectedFile.name);
             fd.append('login_access_token', this.currentUser.login_access_token);
-            fd.append('student_id', this.EditUnitForm.value.id);
-            this.EditUnitForm.value['fd'] = fd;
+            fd.append('id', this.EditUnitForm.value.id);
+            // this.EditUnitForm.value['fd'] = fd;
+            console.log('fd', fd);
+            
             this.userService.studentPictureUpload(fd).pipe(first()).subscribe(
                 (data: any) => {
                     if (data.status_code == 200) {
@@ -131,7 +114,7 @@ export class EditUnitDialog {
             });
     }
 
-    EditUnitSubmit() {
+    EditStudentSubmit() {
         this.submitted = true;
         // stop here if EditUnitForm is invalid
         if (this.EditUnitForm.invalid) {
