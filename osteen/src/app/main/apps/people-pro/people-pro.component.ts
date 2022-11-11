@@ -86,6 +86,8 @@ export class PeopleProComponent implements OnInit {
   AddPeople(): void {
     const dialogRef = this.dialog.open(AddUnitDialog, {
       panelClass: 'addunit-dial',
+      width: '30%',
+      height: '35%'
     });
     this._fuseConfigService.config = {
       layout: {
@@ -132,7 +134,9 @@ export class PeopleProComponent implements OnInit {
   EditPeople(element): void {
     const dialogRef = this.dialog.open(EditUnitDialog, {
       panelClass: 'addunit-dial',
-      data: element
+      data: element,
+      width: '35%',
+      height: '55%'
     });
     this._fuseConfigService.config = {
       layout: {

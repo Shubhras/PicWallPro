@@ -15,9 +15,14 @@ import { DataYearService } from './year-select-data.service';
 import { LoginUserAllDataService } from './login-user-all-data.service';
 import { FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { trigger } from '@angular/animations';
 @Component({
   selector: 'toolbar',
   templateUrl: './toolbar.component.html',
+  animations: [
+    trigger('animate', [
+    ])
+],
   styleUrls: ['./toolbar.component.scss'],
   encapsulation: ViewEncapsulation.None
 })

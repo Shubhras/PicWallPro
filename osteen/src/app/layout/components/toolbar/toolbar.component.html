@@ -1,4 +1,16 @@
 <mat-toolbar class="p-0 mat-elevation-z1">
+    <!-- <div fxFlex="15" fxFlex.gt-xs="10" fxFlex.gt-md="10" fxLayoutAlign="start center">
+        
+    </div> -->
+    <div fxFlex="90" fxFlex.gt-xs="90" fxFlex.gt-md="90" fxLayoutAlign="center center" style="place-content: center; margin-left: 11pc;">
+        <div fxLayout="row">
+            <div class="logo" fxLayout="row">
+                <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    PICWALL PRO
+                </span>
+            </div>
+        </div>
+    </div>
     <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
         <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
             <button mat-icon-button class="navbar-toggle-button" *ngIf="!hiddenNavbar && !rightNavbar" (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
