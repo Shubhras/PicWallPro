@@ -50,7 +50,7 @@
         </mat-form-field> -->
         <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
           <mat-label>Select Grade Years</mat-label>
-          <mat-select formControlName="grade_year" required>
+          <mat-select formControlName="grade_year" required class="overflow">
             <mat-option [value]="year" *ngFor="let year of grade_years">{{year}}</mat-option>
           </mat-select>
           <mat-error>Grade Year is required!</mat-error>

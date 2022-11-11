@@ -5,6 +5,10 @@
 
 event-home {
     min-height: 100%;
+    .h2 {
+        color: black;
+        font-size: 35px;
+    }
     .fuse-navy {
         background-color: #2e3340!important;
         color: white !important;
@@ -57,10 +61,10 @@ event-home {
             .eventhome-list-item {
                 min-width: 210px;
                 min-height: 210px;
-                width: 210px;
-                height: 210px;
+                width: 250px;
+                height: 250px;
                 padding: 24px 0;
-                margin: 16px;
+                margin: 70px;
                 border-radius: 8px;
                 background: #000000e0;
                 transition: box-shadow 150ms ease-in;
