@@ -25,7 +25,9 @@ export class EditUnitDialog {
     userPicture: any;
     user_id: any;
     company_id: any;
-    category = ['Class of', 'Staff of', 'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
+    category = [
+        // 'Class of', 'Staff of',
+         'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
     grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
 
     constructor(

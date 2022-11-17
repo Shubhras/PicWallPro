@@ -1,65 +1,66 @@
 <div id="company-performances" class="page-layout blank" style="position: relative">
     <!-- HEADER -->
-    <div class="header header-content-dashboard" fxLayout="row" fxLayout.gt-xs="row">
-        <!-- APP TITLE -->
-        <!-- <div fxFlex="15" fxFlex.gt-xs="10" fxFlex.gt-md="10" fxLayoutAlign="start center">
-
-        </div> -->
-        <div fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-md="100" fxLayoutAlign="center center">
-            <div fxLayout="row" style="margin-right: 6pc;">
-                <div class="logo" fxLayout="row">
-                    <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                        PICWALL PHOTO
-                    </span>
-                </div>
-            </div>
+    <div class="header header-content-dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row">
+      <!-- APP TITLE -->
+      <div fxLayout="row" style="margin-right: 6pc;">
+        <div class="logo" fxLayout="row">
+          <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+              PICWALL PHOTO
+          </span>
         </div>
+      </div>
     </div>
-
-    <div class="content" fxLayout="row wrap" class="filterrow" fxLayoutAlign="start">
-        <!-- <div class="form-group" fxLayoutAlign="center center">
-            <label for="power">CATEGORY</label>
-            <select class="form-control" id="power1" name="power1">
-                <option *ngFor="let Category of class" [value]="pow">{{Category}}</option>
-            </select>
-        </div> -->
-
-        <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field" fxFlex="11">
-            <mat-label>Select Grad Years</mat-label>
-            <mat-select>
-                <mat-option value="domain" *ngFor="let year of years">{{year}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field pl-8" fxFlex="11">
-            <mat-label>Select Category</mat-label>
-            <mat-select>
-                <mat-option value="domain" *ngFor="let cat of category">{{cat}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        &nbsp; &nbsp;&nbsp; &nbsp;
-        <div class="form-group fileUpload" fxLayoutAlign="center center">
-            <button mat-stroked-button class="form-control upload-button">
-                <label class="cursor_pointer">
-                    <input type="file" (change)="detectFiles($event)"/>
-                    Upload Media
-                </label>
-            </button>
-            <div class="output">{{ fileName }} </div>
-
-        </div>
-
-        <!-- <div class="form-group" fxLayoutAlign="center center">
-            <label for="power">YEARS</label>
-            <select class="form-control" id="power1" name="power1">
-                <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
-            </select>
-        </div> -->
-        <!-- &nbsp; &nbsp; -->
-
-    </div>
-    <div class="content" fxLayout="row wrap">
-        <div class="friend" fxFlex="15" fxFlex.gt-md="10" *ngFor="let image of images">
-            <img [src]="image.avatar" class="userimg">
-        </div>
-    </div>
-</div>
+    <!-- HEADER -->  
+  
+     
+  
+      <div fxLayout="row wrap" class="filterrow" fxLayoutAlign="start">
+          <!-- <div class="form-group" fxLayoutAlign="center center">
+              <label for="power">CATEGORY</label>
+              <select class="form-control" id="power1" name="power1">
+                  <option *ngFor="let Category of class" [value]="pow">{{Category}}</option>
+              </select>
+          </div> -->
+  
+          <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field" class="field" fxFlex="11">
+              <mat-label>Select Grad Year</mat-label>
+              <mat-select>
+                  <mat-option value="domain" *ngFor="let year of years">{{year}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field pl-8" class="field" fxFlex="11">
+              <mat-label>Select Category</mat-label>
+              <mat-select>
+                  <mat-option value="domain" *ngFor="let cat of category">{{cat}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      
+          
+          &nbsp; &nbsp;&nbsp; &nbsp;
+          <div class="form-group fileUpload" fxLayoutAlign="center center">
+              <button mat-stroked-button class="form-control upload-button">
+                  <label class="cursor_pointer">
+                      <input type="file" (change)="detectFiles($event)"/>
+                      Upload Media
+                  </label>
+              </button>
+              <div class="output">{{ fileName }} </div>
+  
+          </div>
+  
+          <!-- <div class="form-group" fxLayoutAlign="center center">
+              <label for="power">YEARS</label>
+              <select class="form-control" id="power1" name="power1">
+                  <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+              </select>
+          </div> -->
+          <!-- &nbsp; &nbsp; -->
+  
+      </div>
+      <div class="content" fxLayout="row wrap">
+          <div class="friend" fxFlex="15" fxFlex.gt-md="10" *ngFor="let image of images">
+              <img [src]="image.avatar" class="userimg">
+          </div>
+      </div>
+  </div>
