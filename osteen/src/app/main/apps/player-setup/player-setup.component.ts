@@ -29,7 +29,7 @@ export class PlayerProSetupComponent implements OnInit {
   message: any;
   MessageSuccess: any;
   MessageError: any;
-  displayedColumns: string[] = ['name', 'status', 'main_content','ip_address'];
+  displayedColumns: string[] = ['name', 'status', 'main_content','ip_address','action'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -54,38 +54,41 @@ export class PlayerProSetupComponent implements OnInit {
   * On init
   */
 toppingList =['2022','2021','2023'];
+category = ['Class of', 'Staff of',
+   'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'
+  ];
 
   data=[{
     "id": 1,
-    "name": "Leanne Graham",
+    "name": "Main Entrance",
     "status": "Online",
     "main_content": "Class of",
     "ip_address": "116.206.149.22",
   },
   {
     "id": 2,
-    "name": "Ervin Howell",
+    "name": "Gym North Entrance",
     "status": "Online",
     "main_content": "Staff of",
     "ip_address": "116.206.149.22"
   },
   {
     "id": 3,
-    "name": "Clementine Bauch",
+    "name": "Main Hall East",
     "status": "Online",
     "main_content": "Sports Teams",
     "ip_address": "116.206.149.22"
   },
   {
     "id": 4,
-    "name": "Patricia Lebsack",
+    "name": "Main Entrance",
     "status": "Online",
     "main_content": "Events",
     "ip_address": "116.206.149.22"
   },
   {
     "id": 5,
-    "name": "Chelsey Dietrich",
+    "name": "Main Hall East",
     "status": "Online",
     "main_content": "Random",
     "ip_address": "116.206.149.22"

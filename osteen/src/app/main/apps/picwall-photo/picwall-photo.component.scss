@@ -1,6 +1,12 @@
 @import "src/@fuse/scss/fuse";
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans|Montserrat|Raleway|Ubuntu&display=swap");
 
+@media only screen and (min-width: 1200px) {
+    .mat-dialog-container {
+        min-width: 449px !important;
+    }
+}
+
 .welcome-popup-heading {
     text-align    : center;
     margin        : 0;
@@ -748,8 +754,8 @@ a.decoration.ng-star-inserted {
 
 .header-tittle {
     padding       : 8px 0 0;
-    font-size     : 15px;
-    font-weight   : 500;
+    font-size     : 20px;
+    font-weight   : 800;
     letter-spacing: 0.5px;
     font-weight   : bold;
 }
@@ -865,6 +871,10 @@ a.decoration.ng-star-inserted {
     .business-plan {
         margin-bottom: 66px;
     }
+
+    .field {
+        min-width: 300px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 959px) {
@@ -886,6 +896,10 @@ a.decoration.ng-star-inserted {
     .icon-img {
         width: 31% !important;
     }
+
+    .field {
+        min-width: 300px;
+    }
 }
 
 @media (min-width:960px) and (max-width: 1279px) {
@@ -904,6 +918,10 @@ a.decoration.ng-star-inserted {
     .color-guide {
         // padding-top: 28px;
     }
+
+    .field {
+        min-width: 340px;
+    }
 }
 
 @media (min-width:1280px) and (max-width: 1700px) {
@@ -917,6 +935,10 @@ a.decoration.ng-star-inserted {
 
     .color-guide {
         // padding-top: 28px;
+    }
+
+    .field {
+        min-width: 340px;
     }
 }
 
@@ -984,11 +1006,12 @@ a.decoration.ng-star-inserted {
 .filterrow {
     border-bottom: 1px solid rgb(168, 166, 166);
     padding      : 14px;
+
 }
 
 .form-control {
     width      : 150px;
-    height     : 35px;
+    height     : 20px;
     margin-left: 30px;
 }
 
@@ -1008,3 +1031,8 @@ label.ng-tns-c38-12 {
     cursor: pointer;
 }
 
+.field {
+    padding      : 4px;
+    margin-top: 20px;
+
+}

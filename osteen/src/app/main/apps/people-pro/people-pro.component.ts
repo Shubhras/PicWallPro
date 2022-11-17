@@ -66,7 +66,9 @@ export class PeopleProComponent implements OnInit {
   * On init
   */
   grade_years = ['2017', '2018', '2019', '2020', '2021', '2022'];
-  category = ['Class of', 'Staff of', 'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'];
+  category = ['Class of', 'Staff of',
+  //  'Jr Basketball Team', 'Sr Basketball Team', 'Jr Football Team', 'Sr Football Team', 'Jr Soccer Team'
+  ];
   staffoflist = ['Leanne Graham', 'Ervin Howell', 'Clementine Bauch'];
   
   ngOnInit(): void {

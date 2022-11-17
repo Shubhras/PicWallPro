@@ -153,7 +153,8 @@ input[type="file"] {
 
 .overflow.mat-select {
     overflow: auto;
-
+    max-width: 300px;
+    
     .mat-select-trigger {
         height: 30px;
         padding-top: 10px;
