@@ -2,7 +2,7 @@
   <!-- HEADER -->
   <div class="header header-content-dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row">
     <!-- APP TITLE -->
-    <div fxLayout="row" style="margin-right: 6pc;">
+    <div fxLayout="row">
       <div class="logo" fxLayout="row">
         <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
           PEOPLE
@@ -64,7 +64,9 @@
                   <ng-container matColumnDef="profile">
                     <th mat-header-cell *matHeaderCellDef class="mat-header-name">PROFILE</th>
                     <td mat-cell *matCellDef="let element" class="mat-cell-name">
-                      <img alt="profile_pic" [src]="element.profile" class="hy-profile-image">
+                      <!-- <img alt="profile_pic" [src]="element.profile" class="hy-profile-image"> -->
+                      <img alt="profile_pic" src="assets/images/avatars/profile.jpg" class="hy-profile-image">
+
                   </ng-container>
                   <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef class="mat-header-name">NAME</th>

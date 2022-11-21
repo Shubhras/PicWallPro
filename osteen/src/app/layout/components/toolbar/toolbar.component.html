@@ -2,19 +2,19 @@
     <!-- <div fxFlex="15" fxFlex.gt-xs="10" fxFlex.gt-md="10" fxLayoutAlign="start center">
         
     </div> -->
-    <div fxFlex="90" fxFlex.gt-xs="90" fxFlex.gt-md="90" fxLayoutAlign="center center" style="place-content: center; margin-left: 10pc;">
+    <div fxFlex="85" fxFlex.gt-xs="85" fxFlex.gt-md="85" fxLayoutAlign="center center" style="place-content: center;">
         <div fxLayout="row" fxFlex="100">
             <div fxFlex="44" fxLayout="row" fxLayoutAlign="center center" fxHide fxShow.gt-xs>
-                <img alt="profile_pic" src="/assets/images/logos/defaul_logo.png" class="header-logo">
+                <img alt="profile_pic" src="assets/images/logos/defaul_logo.png" class="header-logo">
             </div>
-            <div class="logo" fxLayout="row" fxFlex="58">
+            <div class="logo" fxLayout="row" fxFlex="58" fxLayoutAlign="start center" style=" margin-left: 10pc;">
                 <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     PICWALL PRO
                 </span>
             </div>
         </div>
     </div>
-    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+    <div  fxFlex="15" fxFlex.gt-xs="15" fxFlex.gt-md="15" fxFill fxLayout="row" fxLayoutAlign="start center">
         <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
             <button mat-icon-button class="navbar-toggle-button" *ngIf="!hiddenNavbar && !rightNavbar" (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
                 <mat-icon class="secondary-text">menu</mat-icon>
@@ -103,12 +103,12 @@
                 </div>
             </button>
             <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
-                <button mat-menu-item [disabled]="unit_name ==''" *ngIf="company_details == 'true'" [routerLink]="'/apps/profile'">
+                <!-- <button mat-menu-item [disabled]="unit_name ==''" *ngIf="company_details == 'true'" [routerLink]="'/apps/profile'">
                     <mat-icon>account_circle</mat-icon>My Profile
-                    <!-- <span>
+                    <span>
                     <a class="link" [routerLink]="'/apps/profile'">My Profile</a>
-                    </span>-->
-                </button>
+                    </span>
+                </button> -->
                 <button mat-menu-item [disabled]="unit_name ==''" *ngIf="company_details == 'true'" [routerLink]="'/apps/password'">
                     <mat-icon>vpn_key</mat-icon>Password
                     <!-- <span><a class="link" [routerLink]="'/apps/password'">Password</a></span> -->
