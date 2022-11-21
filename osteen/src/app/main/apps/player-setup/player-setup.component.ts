@@ -10,6 +10,9 @@ import { first } from 'rxjs/operators';
 import { AlertService, UserService } from 'app/main/apps/_services';
 import { ConfirmationDialogService } from 'app/main/apps/confirmation-dialog/confirmation-dialog.service';
 import { FuseConfigService } from '@fuse/services/config.service';
+import { random } from 'lodash';
+import randomString from 'randomstring';
+
 @Component({
   selector: 'app-player-setup',
   templateUrl: './player-setup.component.html',
@@ -36,6 +39,7 @@ export class PlayerProSetupComponent implements OnInit {
   @ViewChild('TABLE') table: ElementRef;
   @ViewChild('content') content: ElementRef;
     id: number;
+  result: any;
   /**
    * Constructor
    *
@@ -105,6 +109,12 @@ category = ['Class of', 'Staff of',
     // this.id = this.data.id;
     this.unitChangeGet();
   }
+  generateCode(){
+    let code= random(0,9);
+    this.result = randomString.generate(8);
+    console.log('hello:',this.result);
+  }
+
   AddUnitPopupOpen(): void {
     const dialogRef = this.dialog.open(AddUnitDialog, {
       panelClass: 'addunit-dial'

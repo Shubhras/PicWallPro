@@ -581,4 +581,8 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	/* ================== Student_profiles ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/student_profiles', 'LA\Student_profilesController');
 	Route::get(config('laraadmin.adminRoute') . '/student_profile_dt_ajax', 'LA\Student_profilesController@dtajax');
+
+	/* ================== Color_codes ================== */
+	Route::resource(config('laraadmin.adminRoute') . '/color_codes', 'LA\Color_codesController');
+	Route::get(config('laraadmin.adminRoute') . '/color_code_dt_ajax', 'LA\Color_codesController@dtajax');
 });

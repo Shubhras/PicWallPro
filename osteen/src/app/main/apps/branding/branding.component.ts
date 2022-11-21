@@ -1,15 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, Inject, OnDestroy } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/utils';
-import { UnitChangeService } from 'app/main/apps/branding/unit-change.service';
-// import { AddUnitDialog } from 'app/main/apps/branding/addunit.component';
-// import { EditUnitDialog } from 'app/main/apps/branding/editunit.component';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { AlertService, UserService } from 'app/main/apps/_services';
-import { ConfirmationDialogService } from 'app/main/apps/confirmation-dialog/confirmation-dialog.service';
-import { FuseConfigService } from '@fuse/services/config.service';
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-branding',
   templateUrl: './branding.component.html',
@@ -18,214 +12,110 @@ import { FuseConfigService } from '@fuse/services/config.service';
   animations: fuseAnimations
 })
 export class BrandingComponent implements OnInit {
+  test: any;
+  id: number;
+  userFile: any;
+  imageSelected: any;
+  color = 'blue';
+  message = 'Empty';
+  fg: FormGroup;
+  public selectedColor: string = 'blue';
   currentUser: any;
   company_id: any;
-  /*animal: string;
-  name: string;*/
-  viewUnitChangeData: any;
-  unitChangeAllData: any;
-  //module:any;
-  status_code: any;
-  test: any;
-  message: any;
+  colorData: any;
   MessageSuccess: any;
   MessageError: any;
-  displayedColumns: string[] = ['name', 'status', 'main_content','ip_address'];
-  dataSource: any;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('TABLE') table: ElementRef;
-  @ViewChild('content') content: ElementRef;
-    id: number;
-    userFile: any;
-    imageSelected: any;
   /**
    * Constructor
    *
    * @param {ActionPlanService} _initiativeService
    */
-  constructor(
-    private _unitChangeService: UnitChangeService,
-    public dialog: MatDialog,
-    private userService: UserService,
-    private alertService: AlertService,
-    private confirmationDialogService: ConfirmationDialogService,
-    private _fuseConfigService: FuseConfigService,
-  ) {BrandingComponent
+  constructor(private fb: FormBuilder, public dialog: MatDialog, private userService: UserService,
+    private alertService: AlertService) {
+    // console.log(this.message);
+    this.fg = this.fb.group({
+      color: [this.color, Validators.required]
+    });
+    //  this.dialog.open( );
   }
-  /**
-  * On init
-  */
-toppingList =['2022','2021','2023'];
 
   selectedFiles: FileList;
-fileName: string;
+  fileName: string;
 
-detectFiles(event) {
+  detectFiles(event) {
     this.selectedFiles = event.target.files;
     this.fileName = this.selectedFiles[0].name;
-    console.log('selectedFiles: ' + this.fileName );
+    console.log('selectedFiles: ' + this.fileName);
   }
   imageSrc: string;
   url: any; //Angular 11, for stricter type
-	msg = "";
-	
-	//selectFile(event) { //Angular 8
-	selectFile(event: any) { //Angular 11, for stricter type
-		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
-			return;
-		}
-		
-		var mimeType = event.target.files[0].type;
-		
-		if (mimeType.match(/image\/*/) == null) {
-			this.msg = "Only images are supported";
-			return;
-		}
-		
-		var reader = new FileReader();
-		reader.readAsDataURL(event.target.files[0]);
-		
-		reader.onload = (_event) => {
-			this.msg = "";
-			this.url = reader.result; 
-		}
-	}
-  ngOnInit(): void {
-    //this.dataSource.sort = this.sort;
-    // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // this.data;
-    // this.toppingList;
-    // console.log('ii',this.data);
-    
-    // this.id = this.data.id;
-    this.unitChangeGet();
-  }
-//   AddUnitPopupOpen(): void {
-//     const dialogRef = this.dialog.open(AddUnitDialog, {
-//       panelClass: 'addunit-dial'
-//     });
-//     this._fuseConfigService.config = {
-//       layout: {
-//         navbar: {
-//           hidden: true
-//         },
-//         // toolbar: {
-//         //   hidden: false
-//         // },
-//         sidepanel: {
-//           hidden: true
-//         }
-//       }
-//     };
-//     dialogRef.afterClosed().subscribe(result => {
-//       this._fuseConfigService.config = {
-//         layout: {
-//           navbar: {
-//             hidden: false
-//           },
-//           // toolbar: {
-//           //   hidden: true
-//           // },
-//         }
-//       };
-//       if (result == "YesSubmit") {
-//         this.unitChangeGet();
-//       }
-//     });
-//   }
-//   EditUnitPopupOpen(element): void {
-//     const dialogRef = this.dialog.open(EditUnitDialog, {
-//       panelClass: 'addunit-dial',
-//       // width: 'auto',
-//       data: element
-//     });
-//     this._fuseConfigService.config = {
-//       layout: {
-//         navbar: {
-//           hidden: true
-//         },
-//         // toolbar: {
-//         //   hidden: false
-//         // },
-//         sidepanel: {
-//           hidden: true
-//         }
-//       }
-//     };
-//     dialogRef.afterClosed().subscribe(result => {
-//       this._fuseConfigService.config = {
-//         layout: {
-//           navbar: {
-//             hidden: false
-//           },
-//           // toolbar: {
-//           //   hidden: true
-//           // },
-//         }
-//       };
-//       if (result == "YesSubmit") {
-//         this.unitChangeGet();
-//       }
-//     });
-//   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  unitChangeGet() {
-// console.log('data',this.data);
+  msg = "";
 
-    // let login_access_token = this.currentUser.login_access_token;
-    // this.userService.getUnitChange(login_access_token, 1).pipe(first()).subscribe(
-    //   (data: any) => {
-        // this.dataSource = this.data;
-    //     this.unitChangeAllData = this.viewUnitChangeData.data;
-    //     this.unitChangeAllData.map((UNIT: any, index: number) => {
-    //       UNIT.sr_no = index + 1;
-    //     });
-    //     const ELEMENT_DATA: PeriodicElement[] = this.unitChangeAllData;
-    //     this.dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-    //     this.dataSource.paginator = this.paginator;
-    //     console.log('llll',this.dataSource);
-        
-    //   },
-    //   error => {
-    //     this.alertService.error(error);
-    //   });
+
+  selectFile(event: any) { //Angular 11, for stricter type
+    if (!event.target.files[0] || event.target.files[0].length == 0) {
+      this.msg = 'You must select an image';
+      return;
+    }
+
+    var mimeType = event.target.files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      this.msg = "Only images are supported";
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.onload = (_event) => {
+      this.msg = "";
+      this.url = reader.result;
+    }
   }
-  DeleteStrategicData(unit_id) {
+  ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    let login_access_token = this.currentUser.login_access_token;
-    let user_id = this.currentUser.data.id;
-    const confirmResult = this.confirmationDialogService.confirm('unit');
-    confirmResult.afterClosed().subscribe((result) => {
-      if (result == true) {
-        this.userService.deleteUnitChange(login_access_token, unit_id, user_id).pipe(first()).subscribe(
-          data => {
-            this.status_code = data;
-            if (this.status_code.status_code == 200) {
-              this.MessageSuccess = data;
-              this.alertService.success(this.MessageSuccess.message, true);
-              this.unitChangeGet();
-            }
-            else {
-              this.MessageError = data;
-              this.alertService.error(this.MessageError.message, true);
-            }
-          },
-          error => {
-            this.alertService.error(error);
-          });
-      }
-    });
+    this.company_id = this.currentUser.data.company_id;
+    this.getColor();
+  }
+
+
+  addColor(event: any) {
+    if (event == 'blue') {
+      alert('please select a color')
+    } else {
+      console.log('kkkkkk', event);
+      console.log('\nkkkkkk', event.toString(16));
+      this.userService.addColorCode(event, this.company_id).pipe(first()).subscribe(
+        (data: any) => {
+          // console.log('color:', data.status_code);
+          if (data.status_code == 200) {
+            this.MessageSuccess = data;
+            this.getColor();
+            this.alertService.success(this.MessageSuccess.message, true);
+          } else {
+            this.MessageError = data;
+            this.alertService.error(this.MessageError.message, true);
+          }
+          // this.colorData = data;
+        },
+        error => {
+          this.alertService.error(error);
+        });
+    }
+  }
+
+  getColor() {
+    this.userService.getColorCode(this.company_id).pipe(first()).subscribe(
+      (data: any) => {
+        if (data.data) {
+          this.colorData = data.data;
+          console.log('color code:', this.colorData.code);
+        }
+      },
+      error => {
+        this.alertService.error(error);
+      });
   }
 }
-export interface PeriodicElement {
-  sr_no: number;
-  unit_name: string;
-  unit_address: string;
-  company_name: string;
-  action: string;
-}
- 
+

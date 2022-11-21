@@ -8,8 +8,7 @@ import { AlertService, UserService } from 'app/main/apps/_services';
 import { ConfirmationDialogService } from 'app/main/apps/confirmation-dialog/confirmation-dialog.service';
 import { FuseConfigService } from '@fuse/services/config.service';
 import * as XLSX from 'xlsx';
-import { FormControl } from '@angular/forms';
-type AOA = any[][];
+
 @Component({
   selector: 'app-people-pro',
   templateUrl: './people-pro.component.html',
@@ -32,7 +31,6 @@ export class PeopleProComponent implements OnInit {
   displayedColumns: string[] = ['profile', 'name', 'grade_year', 'activities', 'qoute', 'action'];
   dataSource: any;
   studentData: any =[];
-  // exceldata: AOA = [[1, 2], [3, 4]];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
 
@@ -42,9 +40,6 @@ export class PeopleProComponent implements OnInit {
   @ViewChild('content') content: ElementRef;
   id: number;
   peopleData: any;
-  // dataSourcepeople: { id: number; name: string; grad_year: string; activites: string; qoute: string; }[];
-  // dataSource1: { id: number; profile: string; name: string; grad_year: string; activites: string; qoute: string; }[];
-  // convertedJsonData: String;
   excelData: any;
   login_access_token: any;
   unit_id: any;

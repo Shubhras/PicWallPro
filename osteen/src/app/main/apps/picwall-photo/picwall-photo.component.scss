@@ -136,7 +136,7 @@ button.form-control.upload-button.mat-stroked-button {
     color           : #ffff;
     margin-top      : 8px;
     height          : 42px;
-    font-size: 15px;
+    font-size       : 15px;
 }
 
 .courses {
@@ -1024,15 +1024,28 @@ select#power {
     width        : 216px;
     // margin-top: 10px;
 }
+
 label.ng-tns-c38-12 {
     margin-left: 15px;
 }
+
 .cursor_pointer {
     cursor: pointer;
 }
 
-.field {
-    padding      : 4px;
-    margin-top: 20px;
+// .field {
+//     padding   : 4px;
+//     margin-top: 20px;
 
+// }
+
+// .field[_ngcontent-c38] {
+//     padding   : 4px !important;
+// }
+.pic-select-height{
+    height: 20px;
 }
+// .mat-select-trigger {
+//     height: 30px !important;
+//     padding-top: 10px !important;
+// }

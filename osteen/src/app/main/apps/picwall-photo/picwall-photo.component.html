@@ -22,22 +22,20 @@
               </select>
           </div> -->
   
-          <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field" class="field" fxFlex="11">
+          <mat-form-field appearance="outline" class="pr-4"  style="margin-top: 35px;" fxFlex="11">
               <mat-label>Select Grad Year</mat-label>
-              <mat-select>
+              <mat-select class="pic-select-height">
                   <mat-option value="domain" *ngFor="let year of years">{{year}}</mat-option>
               </mat-select>
           </mat-form-field>
   
-          <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field pl-8" class="field" fxFlex="11">
+          <mat-form-field appearance="outline" class="pr-8" style="margin-top: 35px;" fxFlex="11">
               <mat-label>Select Category</mat-label>
-              <mat-select>
+              <mat-select class="pic-select-height">
                   <mat-option value="domain" *ngFor="let cat of category">{{cat}}</mat-option>
               </mat-select>
           </mat-form-field>
       
-          
-          &nbsp; &nbsp;&nbsp; &nbsp;
           <div class="form-group fileUpload" fxLayoutAlign="center center">
               <button mat-stroked-button class="form-control upload-button">
                   <label class="cursor_pointer">

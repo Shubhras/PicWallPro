@@ -46,7 +46,7 @@
         margin-left     : 4px;
     }
 
-    
+
 }
 
 
@@ -67,10 +67,14 @@
     }
 }
 
-.mat-select-trigger {
-    height     : 50px;
-    padding-top: 10px;
-}
+// .mat-select-trigger {
+//     height     : 50px;
+//     padding-top: 10px;
+// }
+// .people-mat-select .mat-select-trigger {
+//     height     : 50px;
+//     padding-top: 10px;
+// }
 
 .test {
     width: unset;
@@ -124,9 +128,9 @@
 button.form-control.upload-button.mat-stroked-button {
     background-color: #2372bb;
     color           : #ffff;
-    margin-top      : 35px;
+    margin-top      : 36px;
     height          : 42px;
-    margin-right: 40px;
+    margin-right    : 40px;
 }
 
 input[type="file"] {
@@ -152,12 +156,21 @@ input[type="file"] {
 // }
 
 .overflow.mat-select {
-    overflow: auto;
+    overflow : auto;
     max-width: 300px;
-    
-    .mat-select-trigger {
-        height: 30px;
-        padding-top: 10px;
-    }
+
+
 }
 
+.mat-form-height.mat-form-field.mat-form-field-type-mat-select .mat-form-field-infix .mat-select-trigger {
+    top: 14px !important;
+}
+
+.people-select-height {
+    height: 42px;
+}
+
+// .mat-select-trigger {
+//     height: 30px;
+//     padding-top: 10px;
+// }

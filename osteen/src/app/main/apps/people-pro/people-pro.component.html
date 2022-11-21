@@ -18,20 +18,19 @@
           <fuse-widget class="widget p-0" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="50" style="margin-left: 1pc;">
             <div fxLayout="column" fxLayoutAlign="start">
               <div fxFlex="50" fxLayout="row" class="example-button-row search-filter-input">
-                <div fxFlex="25">
-                  <mat-form-field appearance="outline" class="srch-anyy srchinput dating last-field">
+                <div fxFlex="25" style="margin-top: 18px;">
+                  <mat-form-field appearance="outline" class="pr-4 mat-form-height">
                     <mat-label>Select Grad Year</mat-label>
-                    <mat-select (selectionChange)="gradeYearFilter($event.value)">
+                    <mat-select class="people-select-height" (selectionChange)="gradeYearFilter($event.value)">
                       <mat-option value="">All</mat-option>
-                      <mat-option [value]="year" *ngFor="let year of grade_years">{{year}}</mat-option>
+                      <mat-option value="domain" *ngFor="let year of grade_years">{{year}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <div fxFlex="25">
-                  <mat-form-field appearance="outline" class="pl-4 srch-anyy srchinput dating last-field">
+                <div fxFlex="25" style="margin-top: 18px;">
+                  <mat-form-field appearance="outline" class="pl-4">
                     <mat-label>Select Category</mat-label>
-                    <mat-select (selectionChange)="categoryYearFilter($event.value)">
-                      <!-- <mat-option [value]="">All</mat-option> -->
+                    <mat-select (selectionChange)="categoryYearFilter($event.value)" class="people-select-height">
                       <mat-option [value]="cat" *ngFor="let cat of category">{{cat}}</mat-option>
                     </mat-select>
                   </mat-form-field>

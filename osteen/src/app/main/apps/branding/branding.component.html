@@ -6,7 +6,7 @@
             <div class="logo" fxLayout="row">
                 <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     BRANDING
-        </span>
+                </span>
             </div>
         </div>
     </div>
@@ -20,33 +20,57 @@
 
                         <div class="content" fxLayout="row wrap">
                             <div class="friend" fxFlex="50">
-                                <ng-container *ngIf="url;  then iAmDone; else iAmNotDone">
-                                </ng-container>
+                                <!-- <ng-container *ngIf="url;  then iAmDone; else iAmNotDone">
+                                </ng-container> -->
 
-                                <ng-template #iAmDone>
+                                <!-- <ng-template #iAmDone>
                                     <div><img class="upload_branding_img" [src]="url" *ngIf="url"></div>
-                                </ng-template>
+                                </ng-template> -->
 
-                                <ng-template #iAmNotDone>
-                                    <img class="upload_branding_img" src="assets/images/avatars/image-icon.png">
-                                </ng-template>
+                                <div *ngIf="!url">
+                                    <img class="upload_branding_img" src="/assets/images/logos/defaul_logo.png">
+                                </div>
+                                <div *ngIf="url">
+                                    <img class="upload_branding_img" [src]="url">
+                                </div>
                                 <br>
                                 <button mat-stroked-button class="form-control1 upload-button1 fileUpload1">
                                     <label class="upload1">
-                                        <input  type="file" (change)="selectFile($event)"/>
-                                      Upload Logo
-                                      </label>
-                                    </button>
-                                <div class="output1">{{ fileName }} </div>
-                                <h3 class="mt-24 mb-8">Background color:</h3>
-                                <!-- <fuse-material-color-picker class="mb-16">
-                                </fuse-material-color-picker> -->
-                                <div ng-app class="color-picker">
-                                    <input type="color" ng-model="test" class="color-input" name="hi" id="" />
-                                    <div class="hi" style="background-color:'{{test}}'">{{test}}</div>
+                                        <input type="file" (change)="selectFile($event)" />
+                                        Upload Logo
+                                    </label>
+                                </button>
+
+                                <div style="margin-top: 40px;">
+                                    <div class="row" style="height: 320px;padding-left: 9px;" fxFlex="100">
+                                        <div fxFlex="50" style="margin-right: 76px;">
+                                            <mat-label>Pick a Color</mat-label>
+                                            <div [style.background]="selectedColor" [cpToggle]="true"
+                                                [cpDialogDisplay]="'inline'" [cpCancelButton]="false"
+                                                [cpCancelButtonClass]="'btn btn-primary btn-xs'"
+                                                [(colorPicker)]="selectedColor" #colorcode value="selectedColor"></div>
+                                        </div>
+                                        <div fxFlex="50"  *ngIf="!colorData">
+                                            <mat-label>Default Color</mat-label>
+                                            <div style="width: 230px; height: 280px; display: flex; justify-content: center"
+                                                [ngStyle]="{ 'background-color': selectedColor }">
+                                            </div>
+                                        </div>
+                                        <div fxFlex="50"  *ngIf="colorData">
+                                            <mat-label>Saved Color</mat-label>
+                                            <div style="width: 230px; height: 280px; display: flex; justify-content: center"
+                                                [ngStyle]="{ 'background-color': colorData.code }">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-
+                                <div>
+                                    <button type="submit" mat-stroked-button
+                                        class="form-control1 upload-button1 fileUpload1"
+                                        (click)="addColor(selectedColor)">
+                                        Save Color Code
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </fuse-widget>

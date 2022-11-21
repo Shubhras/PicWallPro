@@ -9,6 +9,8 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { FuseMaterialColorPickerModule } from '@fuse/components/material-color-picker/material-color-picker.module';
 import { BrandingComponent} from 'app/main/apps/branding/branding.component';
+
+import { ColorPickerModule } from 'ngx-color-picker';
 // import { AddUnitDialog} from 'app/main/apps/branding/addunit.component';
 // import { EditUnitDialog} from 'app/main/apps/branding/editunit.component';
 import { UnitChangeService } from 'app/main/apps/branding/unit-change.service';
@@ -38,6 +40,7 @@ const routes: Routes = [
         MatTabsModule,
         MatInputModule,
         MatDialogModule ,
+        ColorPickerModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
         }),

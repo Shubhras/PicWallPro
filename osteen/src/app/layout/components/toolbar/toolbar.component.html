@@ -3,8 +3,11 @@
         
     </div> -->
     <div fxFlex="90" fxFlex.gt-xs="90" fxFlex.gt-md="90" fxLayoutAlign="center center" style="place-content: center; margin-left: 10pc;">
-        <div fxLayout="row">
-            <div class="logo" fxLayout="row">
+        <div fxLayout="row" fxFlex="100">
+            <div fxFlex="44" fxLayout="row" fxLayoutAlign="center center" fxHide fxShow.gt-xs>
+                <img alt="profile_pic" src="/assets/images/logos/defaul_logo.png" class="header-logo">
+            </div>
+            <div class="logo" fxLayout="row" fxFlex="58">
                 <span class="logo-text header-tittle" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     PICWALL PRO
                 </span>

@@ -1,9 +1,17 @@
 <mat-toolbar>
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.gt-xs="space-between center" fxFlex>
-        <a href="javascript:void(0)" mat-button fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-xs>
+        <div fxFlex="25">
+            <a href="javascript:void(0)" mat-button  fxLayout="row" fxLayoutAlign="start" fxHide
+            fxShow.gt-xs>
             <!-- <mat-icon class="s-16 mr-sm-4">shopping_cart</mat-icon> -->
             <span>2021 - 2022 © PicWall Pro </span>
         </a>
+        </div>
+       
+        <div fxFlex="75" fxLayout="row" fxLayoutAlign="start" fxHide fxShow.gt-xs>
+            <img alt="profile_pic" src="/assets/images/logos/defaul_logo.png" class="header-logo">
+        </div>
+
         <!-- <div class="content-container">
             <div class="content-area">
                 <clr-dropdown [clrCloseMenuOnItemClick]="false">

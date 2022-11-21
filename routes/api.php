@@ -273,6 +273,10 @@ Route::post('/api-update-student-profile-picture', 'ApiStudentsController@api_up
 Route::post('/api-update-students', 'ApiStudentsController@api_update_student');
 Route::post('/api-delete-students', 'ApiStudentsController@api_delete_student');
 
+//Api Get ColorCode Route.
+Route::post('/api-get-ColoCode', 'ApiColorCodeController@api_get_ColoCode');
+Route::post('/api-add-ColoCode', 'ApiColorCodeController@api_add_ColoCode');
+
 // Handle multi profile pictures
 Route::post('/api-update-profiles', 'ApiProfileController@api_update_profiles');
 Route::post('/api-get-profiles', 'ApiProfileController@api_get_profiles');

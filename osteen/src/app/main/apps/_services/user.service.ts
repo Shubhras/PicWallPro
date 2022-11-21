@@ -74,6 +74,14 @@ export class UserService {
     return this.http.post(`${API_URL}/api-delete-students`, data);
   }
   
+  // ColorCode
+  getColorCode(companyId: any ) {
+    return this.http.post(`${API_URL}/api-get-ColoCode`, {company_id: companyId});
+  }
+  addColorCode(code:any, companyId: any) {
+    return this.http.post(`${API_URL}/api-add-ColoCode`,  {code : code, company_id: companyId});
+  }
+
   reminderActionPlan(login_token: string, unitId: string, companyId: string, deptAlot: any, userID: any) {
     return this.http.post(`${API_URL}/api-strobj-review`, { login_access_token: login_token, unit_id: unitId, company_id: companyId, dept_alot: deptAlot, user_id: userID });
   }
