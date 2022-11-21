@@ -46,6 +46,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   allDetailsCompany: any;
   companyFinancialYear: any;
   companyCreateData: any;
+  loginUserDetails: any;
   /**
    * Constructor
    *
@@ -137,13 +138,17 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     // Set the selected language from default languages
     this.selectedLanguage = _.find(this.languages, { 'id': this._translateService.currentLang });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loginUserDetails = JSON.parse(localStorage.getItem('LoginUserDetails'));
     this.allDetailsCompany = JSON.parse(localStorage.getItem('allDetailsCompany'));
     this.companyFinancialYear = this.allDetailsCompany ? this.allDetailsCompany.general_data[0].financial_year : null;
     this.companyCreateData = this.allDetailsCompany ? this.allDetailsCompany.general_data[0].company_created_date : null;
 
     this.UserName = this.currentUser ? this.currentUser.data.name : null;
     this.company_details = this.currentUser ? this.currentUser.data.company_details : null;
-    this.userPicture = this.currentUser ? this.currentUser.data.profile_picture : null;
+    // this.userPicture = this.currentUser ? this.currentUser.data.profile_picture : null;
+    this.userPicture = this.loginUserDetails ? this.loginUserDetails.profile_picture : null;
+  // console.log('userPicture:', this.userPicture);
+  
     if (this.userPicture != '') {
       this.userPicture = this.userPicture;
     }
