@@ -1,4 +1,4 @@
-<div class="content popup-content">
+<div>
     <div fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
         <form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="AddUnitForm" [formGroup]="AddUnitForm"
             (ngSubmit)="AddUnitSubmit()" novalidate>
@@ -11,7 +11,7 @@
                 </mat-toolbar>
             </div>
             <div [fxLayout]="direction" fxLayout.xs="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
-                <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
                     <mat-label>Name</mat-label>
                     <input matInput formControlName="name" required>
                     <mat-error>Name is required!</mat-error>
@@ -21,9 +21,9 @@
                     <input matInput type="number" formControlName="grad_year" required>
                     <mat-error>Grad Year is required!</mat-error>
                 </mat-form-field> -->
-                <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad test">
+                <mat-form-field appearance="outline" fxFlex="50">
                     <mat-label>Select Grade Years</mat-label>
-                    <mat-select formControlName="grade_year" required class="overflow">
+                    <mat-select formControlName="grade_year" required>
                         <mat-option [value]="year" *ngFor="let year of grade_years">{{year}}</mat-option>
                     </mat-select>
                     <mat-error>Grade Year is required!</mat-error>
@@ -32,21 +32,22 @@
             <!-- <div [fxLayout]="direction" fxLayout.xs="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
             </div> -->
+            &nbsp;
             <div [fxLayout]="direction" fxLayout.xs="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
                 <!-- <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
                     <mat-label>Activities</mat-label>
                     <input matInput formControlName="activities" required>
                     <mat-error>Activities is required!</mat-error>
                 </mat-form-field> -->
-                <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad test">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
                     <mat-label>Activities</mat-label>
-                    <mat-select formControlName="activities" required multiple class="overflow">
+                    <mat-select formControlName="activities" required multiple class="overflow1">
                         <mat-option [value]="cat" *ngFor="let cat of category">{{cat}}</mat-option>
                     </mat-select>
                     <mat-error>Grade Year is required!</mat-error>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" fxFlex="50" class="pr-4 edit-dials-ad">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
                     <mat-label>Qoute</mat-label>
                     <input matInput formControlName="qoute">
                     <!-- <mat-error>Qoute is required!</mat-error> -->
@@ -70,3 +71,4 @@
         </form>
     </div>
 </div>
+

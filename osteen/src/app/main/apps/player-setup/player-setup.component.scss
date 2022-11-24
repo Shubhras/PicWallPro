@@ -107,8 +107,8 @@
 }
 
 .btn-light {
-    // width: 200px;
-    width: 55%;
+    width: 200px;
+    // width: 55%;
     background-color: #1c5e97;
 }
 
@@ -118,4 +118,28 @@
 .minute-valid{
     margin-left: 22%;
     color: red;
+}
+
+@media (min-width:1280px) and (max-width: 1700px) {
+    .header-field-activate{
+        width: 70%;
+    }
+}
+
+@media (min-width:960px) and (max-width: 1279px) {
+    .header-field-activate{
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+    .header-field-activate{
+        width: 100%;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+    .header-field-activate{
+    width: 375px;
+    }
 }

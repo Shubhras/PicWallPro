@@ -51,21 +51,21 @@
 
 
 // responsive start
-@media (min-width: 601px) and (max-width: 767px) {
-    .addunit-dial {
-        .mat-dialog-container {
-            min-width: 309px !important;
-        }
-    }
-}
+// @media (min-width: 601px) and (max-width: 767px) {
+//     .addunit-dial {
+//         .mat-dialog-container {
+//             min-width: 309px !important;
+//         }
+//     }
+// }
 
-@media (min-width: 1101px) and (max-width: 1199px) {
-    .addunit-dial {
-        .mat-dialog-container {
-            min-width: 449px !important;
-        }
-    }
-}
+// @media (min-width: 1101px) and (max-width: 1199px) {
+//     .addunit-dial {
+//         .mat-dialog-container {
+//             min-width: 449px !important;
+//         }
+//     }
+// }
 
 // .mat-select-trigger {
 //     height     : 50px;
@@ -87,7 +87,7 @@
 // }
 .add_icon {
     float       : right;
-    margin-right: 220px;
+    // margin-right: 220px;
     margin-top  : 35px;
     font-size   : 39px;
 }
@@ -155,7 +155,10 @@ input[type="file"] {
     overflow : auto;
     max-width: 300px;
 
-
+    .mat-select-trigger {
+        height: 30px;
+        padding-top: 10px;
+    }
 }
 
 .mat-form-height.mat-form-field.mat-form-field-type-mat-select .mat-form-field-infix .mat-select-trigger {
@@ -171,4 +174,71 @@ background-color: red;
 // .mat-select-trigger {
 //     height: 30px;
 //     padding-top: 10px;
+// }
+
+
+/* Responsive start */
+
+@media (min-width: 320px) and (max-width: 767px) {
+    
+    .mat-dialog-container {
+        margin-left: -5pc !important;
+    }
+
+    .field {
+        min-width: 300px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+    
+    .mat-dialog-container {
+        margin-left: -9pc !important;
+    }
+
+    .icon-img {
+        width: 31% !important;
+    }
+
+    .field {
+        min-width: 300px;
+    }
+}
+
+@media (min-width:960px) and (max-width: 1279px) {
+
+    .mat-dialog-container {
+        margin-left: -10pc !important;
+    }
+
+    .icon1-img {
+        width: 21% !important;
+    }
+
+
+    .field {
+        min-width: 340px;
+    }
+}
+
+@media (min-width:1280px) and (max-width: 1700px) {
+    .icon1-img {
+        width: 100% !important;
+    }
+
+
+    .field {
+        min-width: 340px;
+    }
+}
+
+// .rest {
+//     .mat-input-element {
+//       height: 25px !important;
+//     }
+//     .mat-select-trigger {
+//         height: 30px;
+//         padding-top: 10px;
+//     }
+
 // }

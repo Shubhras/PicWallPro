@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
     selector: 'edit-unit-dialog',
     templateUrl: 'editunit.component.html',
-    styleUrls: ['./people-pro.component.scss'],
+    styleUrls: ['./editunit.component.scss'],
 })
 export class EditUnitDialog {
     direction = 'row';

@@ -1,6 +1,6 @@
 <div id="company-performances" class="page-layout blank" style="position: relative">
     <!-- HEADER -->
-    <div class="header header-content-dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row">
+    <div class="header header-content-dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" >
       <!-- APP TITLE -->
       <div fxLayout="row">
         <div class="logo" fxLayout="row">
@@ -14,7 +14,7 @@
   
      
   
-      <div fxLayout="row wrap" class="filterrow" fxLayoutAlign="start">
+      <div fxLayout="row wrap" class="filterrow"  fxLayoutAlign="start">
           <!-- <div class="form-group" fxLayoutAlign="center center">
               <label for="power">CATEGORY</label>
               <select class="form-control" id="power1" name="power1">
@@ -22,21 +22,21 @@
               </select>
           </div> -->
   
-          <mat-form-field appearance="outline" class="pr-4"  style="margin-top: 35px;" fxFlex="11">
+          <mat-form-field appearance="outline" class="pr-4 field"  style="margin-top: 35px;" fxFlex="11">
               <mat-label>Select Grad Year</mat-label>
               <mat-select class="pic-select-height">
                   <mat-option value="domain" *ngFor="let year of years">{{year}}</mat-option>
               </mat-select>
           </mat-form-field>
   
-          <mat-form-field appearance="outline" class="pr-8" style="margin-top: 35px;" fxFlex="11">
+          <mat-form-field appearance="outline" class="pr-8 field" style="margin-top: 35px;" fxFlex="11">
               <mat-label>Select Category</mat-label>
               <mat-select class="pic-select-height">
                   <mat-option value="domain" *ngFor="let cat of category">{{cat}}</mat-option>
               </mat-select>
           </mat-form-field>
       
-          <div class="form-group fileUpload" fxLayoutAlign="center center">
+          <div class="form-group fileUpload" fxLayoutAlign="center center" fxLayout="row wrap">
               <button mat-stroked-button class="form-control upload-button">
                   <label class="cursor_pointer">
                       <input type="file" (change)="detectFiles($event)"/>
@@ -57,8 +57,8 @@
   
       </div>
       <div class="content" fxLayout="row wrap">
-          <div class="friend" fxFlex="15" fxFlex.gt-md="10" *ngFor="let image of images">
-              <img [src]="image.avatar" class="userimg">
+          <div class="friend" fxFlex="15" fxFlex.gt-md="10" fxFlex.gt-xs="18" fxFlex="1 1 141px" *ngFor="let image of images">
+              <img [@slideInLeft] [src]="image.avatar" class="userimg">
           </div>
       </div>
   </div>

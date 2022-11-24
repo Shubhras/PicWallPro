@@ -1,0 +1,30 @@
+.popup-header {
+    .mat-toolbar-multiple-rows {
+        min-height   : 45px;
+        margin-bottom: 14px !important;
+        background   : #1c5e97 !important;
+        border-radius: 4px;
+    }
+
+    .mat-toolbar-row,
+    .mat-toolbar-single-row {
+        // height : 30px !important;
+        padding: 0 8px;
+
+        span.title.dialog-title {
+            font-size: 16px;
+            color    : #fff;
+        }
+    }
+}
+
+.overflow1.mat-select {
+    overflow : auto;
+    max-width: 300px;
+
+    // .mat-select-trigger {
+    //     height: 30px;
+    //     padding-top: 10px;
+    // }
+}
+

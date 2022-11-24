@@ -8,7 +8,7 @@ import { AlertService, UserService } from 'app/main/apps/_services';
 @Component({
     selector: 'add-unit-dialog',
     templateUrl: 'addunit.component.html',
-    styleUrls: ['./people-pro.component.scss'],
+    styleUrls: ['./addunit.component.scss'],
 })
 export class AddUnitDialog {
     direction = 'row';

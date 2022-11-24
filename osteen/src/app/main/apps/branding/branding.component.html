@@ -18,7 +18,7 @@
                     <fuse-widget class="widget p-0" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="50" style="margin-left: 3pc;
                 ">
 
-                        <div class="content" fxLayout="row wrap">
+                        <div class="content" fxLayout="row wrap" fxLayout.gt-xs="row">
                             <div class="friend" fxFlex="50">
                                 <!-- <ng-container *ngIf="url;  then iAmDone; else iAmNotDone">
                                 </ng-container> -->
@@ -56,9 +56,9 @@
                                                 [ngStyle]="{ 'background-color': selectedColor }">
                                             </div>
                                         </div>
-                                        <div fxFlex="50"  *ngIf="colorData">
+                                        <div class="SavedC" fxFlex="50"  *ngIf="colorData">
                                             <mat-label>Saved Color</mat-label>
-                                            <div style="width: 230px; height: 280px; display: flex; justify-content: center"
+                                            <div  style="width: 230px; height: 280px; display: flex; justify-content: center"
                                                 [ngStyle]="{ 'background-color': colorData.code }">
                                             </div>
                                         </div>

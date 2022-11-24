@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { DataYearService } from 'app/layout/components/toolbar/year-select-data.service';
 import { trigger } from '@angular/animations';
 import { DatePipe } from '@angular/common';
+import { fuseAnimations } from '@fuse/animations';
  
 declare var $: any;
 export interface DialogData {
@@ -15,7 +16,7 @@ export interface DialogData {
 @Component({
     selector: 'app-picwall-photo',
     templateUrl: './picwall-photo.component.html',
-    animations: [
+    animations:[fuseAnimations,
         trigger('animate', [
         ])
     ],
