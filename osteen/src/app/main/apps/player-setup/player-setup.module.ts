@@ -11,6 +11,7 @@ import { PlayerProSetupComponent} from 'app/main/apps/player-setup/player-setup.
 import { AddUnitDialog} from 'app/main/apps/player-setup/addunit.component';
 import { EditUnitDialog} from 'app/main/apps/player-setup/editunit.component';
 import { UnitChangeService } from 'app/main/apps/player-setup/unit-change.service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 const routes: Routes = [
     {
         path     : '**',
@@ -37,6 +38,7 @@ const routes: Routes = [
         MatTabsModule,
         MatInputModule,
         MatDialogModule ,
+        NgMultiSelectDropDownModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
         }),

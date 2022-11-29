@@ -21,6 +21,12 @@ import randomString from 'randomstring';
   animations: fuseAnimations
 })
 export class PlayerProSetupComponent implements OnInit {
+
+  showFilter = false;
+  limitSelection = false;
+  cities: any = [];
+  selectedItems: any = [];
+  dropdownSettings: any = {};
   currentUser: any;
   company_id: any;
   /*animal: string;
@@ -100,6 +106,27 @@ category = ['Class of', 'Staff of',
   
 ]
   ngOnInit(): void {
+
+    this.cities = [
+      { item_id: 1, item_text: 'Jr Basketball Team'},
+      { item_id: 2, item_text: 'Sr Basketball Team' },
+      { item_id: 3, item_text: 'Jr Football Team' },
+      { item_id: 4, item_text: 'Sr Football Team' },
+      { item_id: 5, item_text: 'Jr Soccer Team' },
+    ];
+    this.selectedItems = [
+      { item_id: 3, item_text: 'Jr Football Team' },
+      { item_id: 5, item_text: 'Sr Football Team' },
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'select All',
+      unSelectAllText: 'Unselect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.showFilter,
+    };
     //this.dataSource.sort = this.sort;
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.data;
@@ -108,6 +135,13 @@ category = ['Class of', 'Staff of',
     
     // this.id = this.data.id;
     this.unitChangeGet();
+  }
+
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(item: any) {
+    console.log('onSelectAll', item);
   }
   generateCode(){
     let code= random(0,9);
