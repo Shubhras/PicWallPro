@@ -108,15 +108,17 @@ category = ['Class of', 'Staff of',
   ngOnInit(): void {
 
     this.cities = [
-      { item_id: 1, item_text: 'Jr Basketball Team'},
-      { item_id: 2, item_text: 'Sr Basketball Team' },
-      { item_id: 3, item_text: 'Jr Football Team' },
-      { item_id: 4, item_text: 'Sr Football Team' },
-      { item_id: 5, item_text: 'Jr Soccer Team' },
+      { item_id: 1, item_text: 'Class of'},
+      { item_id: 2, item_text: 'Staff of' },
+      { item_id: 3, item_text: 'Jr Basketball Team'},
+      { item_id: 4, item_text: 'Sr Basketball Team' },
+      { item_id: 5, item_text: 'Jr Football Team' },
+      { item_id: 6, item_text: 'Sr Football Team' },
+      { item_id: 7, item_text: 'Jr Soccer Team' },
     ];
     this.selectedItems = [
-      { item_id: 3, item_text: 'Jr Football Team' },
-      { item_id: 5, item_text: 'Sr Football Team' },
+      { item_id: 5, item_text: 'Jr Football Team' },
+      { item_id: 7, item_text: 'Sr Football Team' },
     ];
     this.dropdownSettings = {
       singleSelection: false,
